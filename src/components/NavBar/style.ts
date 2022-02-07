@@ -50,7 +50,7 @@ export const LinkSocial = styled.a<PropsStyle>`
   align-items: center;
   justify-items: center;
   flex-direction: row;
-  border-radius: 4px;
+  border-radius: 8px;
   gap: 10px;
   border: 3px solid transparent;
   outline: 3px solid transparent;

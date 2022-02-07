@@ -29,7 +29,31 @@ function HomePage() {
     <S.ContainerHome>
       <SvgWave color={colors[i]} bg={"#fff"} />
       <main>
-        <section>salve</section>
+        <section>
+          <S.Title color={colors[i]}>Pokedex V3</S.Title>
+          <S.Purpose color={colors[i]}>
+            <div>
+              <span />
+              <h2> PURPOSE </h2>
+              <span />
+            </div>
+            <aside>
+              <p>
+                Re-create an old project, called <span>pokedex V2</span>, with new tools, which
+                include:
+              </p>
+              <ul>
+                <li>New animation effects with CSS</li>
+                <li>User experience (UX)</li>
+                <li>Horizontal scrolling</li>
+                <li>Performance</li>
+                <li>Acessibility & SEO</li>
+              </ul>
+            </aside>
+          </S.Purpose>
+          <h3>S</h3>
+          <p>sudhu</p>
+        </section>
         <aside>
           {colors[i] === "#DFCB98" ? (
             <S.pokemonImg src={Charizard} />
