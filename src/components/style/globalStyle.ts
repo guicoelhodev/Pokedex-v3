@@ -11,4 +11,13 @@ export const GlobalStyle = createGlobalStyle`
 html {
   scroll-behavior: smooth;
 }
+li {
+  list-style: none;
+}
+button {
+  cursor:pointer;
+}
+a {
+  text-decoration: none;
+}
 `;
