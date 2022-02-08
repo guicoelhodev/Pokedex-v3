@@ -8,10 +8,8 @@ export const changeFill = keyframes`
   100% {opacity:0}
 `;
 export const SvgComponent = styled.svg`
-  height: 100vh;
   width: 100%;
   position: absolute;
   transition: fill 10s linear;
   animation: ${changeFill} 10s infinite;
-  aspect-ratio: inherit;
 `;

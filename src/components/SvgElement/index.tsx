@@ -5,6 +5,7 @@ interface Type {
   color: string;
   bg: string;
 }
+
 const SvgWave = (props: Type) => (
   <S.SvgComponent width={1280} height={720} xmlns="http://www.w3.org/2000/svg">
     <path fill={props.bg} d="M0 0h1280v720H0z" />

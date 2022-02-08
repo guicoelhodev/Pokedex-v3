@@ -30,9 +30,49 @@ export const ContainerHome = styled.div`
 
   section {
     display: flex;
+    justify-content: space-between;
     width: 100%;
     flex-direction: column;
-    padding: 30px;
+    padding: 30px 0 20px 30px;
+  }
+
+  @media (max-width: 950px) {
+    main {
+      flex-direction: column-reverse;
+
+      aside,
+      section {
+        padding: 0;
+      }
+      section {
+        height: 100%;
+        padding-left: 20px;
+
+        div {
+          padding: 0 60px;
+        }
+      }
+      aside {
+        height: auto;
+        width: auto;
+      }
+    }
+
+    @media (max-width: 500px) {
+      section {
+        padding-left: 0 !important;
+        span,
+        p {
+          font-size: 1rem;
+        }
+      }
+      h1 {
+        padding-top: 10px;
+        text-align: center;
+        font-size: 2.6rem;
+        text-shadow: -1px -1px 0px #fff, -1px 1px 0px #fff, 1px -1px 0px #fff, 1px 0px 0px #fff;
+      }
+    }
   }
 `;
 
@@ -67,6 +107,13 @@ export const pokemonImg = styled.img`
   :hover {
     scale: 1.12;
   }
+
+  @media (max-width: 950px) {
+    width: 300px;
+  }
+  @media (max-width: 500px) {
+    width: 220px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -76,7 +123,7 @@ export const Title = styled.h1`
 `;
 
 export const Purpose = styled.div`
-  padding-top: 40px;
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -128,6 +175,65 @@ export const Purpose = styled.div`
         list-style: square;
         font-size: 1.2rem;
         padding: 5px 0;
+      }
+    }
+  }
+  @media (max-width: 700px) {
+    h2 {
+      padding-bottom: 20px !important;
+    }
+  }
+  @media (max-width: 500px) {
+    ul {
+      padding-left: 40px;
+    }
+  }
+  @media (max-width: 375px) {
+    aside {
+      p,
+      span {
+        font-size: 1rem;
+      }
+
+      p {
+        padding: 0 20px;
+      }
+
+      ul {
+        li {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+`;
+
+export const ContainerShowTools = styled.div`
+  width: 100%;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 50%;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      transition: all 1s linear;
+      fill: ${(props) => props.color};
+      filter: brightness(0.6);
+    }
+
+    :focus {
+      svg {
+        transform: rotate(90deg);
       }
     }
   }

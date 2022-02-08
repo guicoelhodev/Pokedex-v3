@@ -39,6 +39,19 @@ export const NavBar = styled.nav`
       width: 100%;
     }
   }
+  @media (max-width: 700px) {
+    ul {
+      padding-right: 5px;
+    }
+  }
+  @media (max-width: 500px) {
+    height: 85%;
+    ul {
+      justify-content: flex-end;
+      height: 100%;
+      gap: 10px;
+    }
+  }
 `;
 
 export const LinkSocial = styled.a<PropsStyle>`

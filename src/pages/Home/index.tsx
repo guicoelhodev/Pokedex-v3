@@ -1,15 +1,21 @@
-import { useState } from "react";
+/* eslint-disable prefer-const */
+import { useEffect, useState } from "react";
 import SvgWave from "../../components/SvgElement";
 import Blastoise from "../../assets/img/blastoise.png";
 import Entei from "../../assets/img/entei.png";
 import Charizard from "../../assets/img/charizard.png";
+import { AiFillSetting } from "react-icons/ai";
 
 import * as S from "./style";
 import NavBar from "../../components/NavBar";
+import ToolsComponent from "../../components/Tools";
+import SvgWaveSmartphone from "../../components/SvgPhone";
+import useWindowDimensions from "../../hook/useWindowDimensions";
 
 function HomePage() {
   const colors = ["#DFCB98", "#81D3E5", "#AB9785"];
   const [i, setI] = useState(0);
+  const { width } = useWindowDimensions();
 
   const changeColorSvg = () => {
     console.log(i);
@@ -24,10 +30,10 @@ function HomePage() {
   };
 
   changeColorSvg();
-
   return (
     <S.ContainerHome>
-      <SvgWave color={colors[i]} bg={"#fff"} />
+      {width > 900 ? <SvgWave color={colors[i]} bg={"#fff"} /> : <></>}
+      {width <= 500 ? <SvgWaveSmartphone color={colors[i]} bg={"#fff"} /> : <></>}
       <main>
         <section>
           <S.Title color={colors[i]}>Pokedex V3</S.Title>
@@ -51,8 +57,7 @@ function HomePage() {
               </ul>
             </aside>
           </S.Purpose>
-          <h3>S</h3>
-          <p>sudhu</p>
+          <ToolsComponent />
         </section>
         <aside>
           {colors[i] === "#DFCB98" ? (
