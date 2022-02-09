@@ -1,5 +1,6 @@
 import { GlobalStyle } from "../components/style/globalStyle";
 import HomePage from "../pages/Home";
+import Pokedex from "../pages/Pokedex";
 import Pokemon from "../pages/Pokemon";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       <GlobalStyle />
       <HomePage />
       <Pokemon />
+      <Pokedex />
     </>
   );
 }

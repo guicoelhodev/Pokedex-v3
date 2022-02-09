@@ -159,10 +159,14 @@ export const Purpose = styled.div`
       text-align: center;
       font-weight: 400;
 
-      span {
+      a {
         font-weight: 600;
         color: #c94040;
         border: none;
+
+        :hover {
+          text-decoration: underline;
+        }
       }
     }
 
@@ -191,7 +195,7 @@ export const Purpose = styled.div`
   @media (max-width: 375px) {
     aside {
       p,
-      span {
+      a {
         font-size: 1rem;
       }
 

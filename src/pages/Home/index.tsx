@@ -1,10 +1,9 @@
 /* eslint-disable prefer-const */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SvgWave from "../../components/SvgElement";
 import Blastoise from "../../assets/img/blastoise.png";
 import Entei from "../../assets/img/entei.png";
 import Charizard from "../../assets/img/charizard.png";
-import { AiFillSetting } from "react-icons/ai";
 
 import * as S from "./style";
 import NavBar from "../../components/NavBar";
@@ -45,8 +44,14 @@ function HomePage() {
             </div>
             <aside>
               <p>
-                Re-create an old project, called <span>pokedex V2</span>, with new tools, which
-                include:
+                Re-create an old project, called{" "}
+                <a
+                  href="https://pokedex-v2-coelho-react.netlify.app/"
+                  target="_blank"
+                  rel="noreferrer">
+                  pokedex V2
+                </a>
+                , with new tools, which include:
               </p>
               <ul>
                 <li>New animation effects with CSS</li>
