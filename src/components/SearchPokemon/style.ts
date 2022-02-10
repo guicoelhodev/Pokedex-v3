@@ -1,19 +1,30 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Alert } from "@mui/material";
 import styled from "styled-components";
+import { keyframes } from "styled-components";
 
-export const Container = styled.section`
+const loading = keyframes`
+from { transform: rotate(0)}
+to { transform: rotate(360deg)}
+`;
+
+export const Container = styled.main`
   padding: 50px;
   width: clamp(280px, 90%, 600px);
-  height: 100%;
+  height: 10px;
   border: 1px solid red;
   display: flex;
-  gap: 20px;
-
-  * {
-    z-index: 3;
-  }
+  flex-direction: column;
 
   section {
     display: flex;
+    gap: 20px;
+  }
+  aside {
+    z-index: 3;
+    width: clamp(280px, 90%, 330px);
+
+    text-align: center;
   }
 `;
 
@@ -62,5 +73,14 @@ export const SearchBtn = styled.button`
   }
   :active {
     filter: brightness(1.3);
+  }
+`;
+
+export const LoadingPokemon = styled(SearchBtn)`
+  gap: 10px;
+  flex-direction: row-reverse;
+
+  svg {
+    animation: ${loading} 2s infinite linear;
   }
 `;
