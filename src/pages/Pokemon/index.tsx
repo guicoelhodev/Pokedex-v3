@@ -6,7 +6,6 @@ import SearchPokemon from "../../components/SearchPokemon";
 
 function Pokemon() {
   const { width } = useWindowDimensions();
-
   return (
     <S.ContainerPokemon>
       {width > 900 ? <SvgWave color={"#DFEAC1"} bg={"#fff"} /> : <></>}

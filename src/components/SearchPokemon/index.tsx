@@ -4,7 +4,8 @@ import { Autocomplete, Alert, TextField } from "@mui/material";
 import { MdCatchingPokemon } from "react-icons/md";
 import * as S from "./style";
 import api from "../../service/api";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { PokemonContext } from "../../context/usePokemonData";
 
 interface PokemonsType {
   name: string;
@@ -12,15 +13,18 @@ interface PokemonsType {
 function SearchPokemon() {
   const [pokemonsData, setPokemonsData] = useState<string[]>([]);
   const [errorPokemon, setErrorPokemon] = useState(false);
-  const [loadingState, setLoadingState] = useState(true);
+  const [loadingState, setLoadingState] = useState(false);
+  const { name, setName, pokemonData } = useContext(PokemonContext);
 
   const pokemon = document.getElementById("combo-box-demo") as HTMLInputElement;
 
   const searchPokemon = () => {
     let pokemonSelected = pokemon?.value;
 
-    if (pokemonSelected.length != 0) return setErrorPokemon(false);
-    else return setErrorPokemon(true);
+    if (pokemonSelected.length != 0) {
+      setErrorPokemon(false);
+      setName(pokemonSelected);
+    } else return setErrorPokemon(true);
   };
 
   useEffect(() => {
@@ -52,7 +56,7 @@ function SearchPokemon() {
             renderInput={(params) => <TextField {...params} label="Search your favorite pokemon" />}
           />
           {loadingState ? (
-            <S.LoadingPokemon>
+            <S.LoadingPokemon onClick={() => console.log(pokemonData)}>
               <MdCatchingPokemon />
               <span>Loading </span>
             </S.LoadingPokemon>
