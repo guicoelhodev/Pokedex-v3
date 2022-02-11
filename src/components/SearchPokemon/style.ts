@@ -8,11 +8,10 @@ from { transform: rotate(0)}
 to { transform: rotate(360deg)}
 `;
 
-export const Container = styled.main`
+export const Container = styled.div`
   padding: 50px;
   width: clamp(280px, 90%, 600px);
   height: 10px;
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
 

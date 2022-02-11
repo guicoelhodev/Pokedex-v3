@@ -14,4 +14,5 @@ export const SvgComponent = styled.svg`
   transition: fill 10s linear;
   animation: ${changeFill} 10s infinite;
   aspect-ratio: inherit;
+  z-index: 1;
 `;
