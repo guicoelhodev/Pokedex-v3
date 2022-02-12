@@ -1,10 +1,7 @@
 /* eslint-disable no-var */
-
-import { color } from "@mui/system";
-
 /* eslint-disable prefer-const */
-export function getColorPokemon(typeColor: any) {
-  let colors: Array<string> = [];
+export function getColorPokemon(typeColor: string) {
+  let colors = "";
   const allColorsAvaliable: any = {
     normal: "#a4acaf",
     fighting: "#d56723",
@@ -14,7 +11,7 @@ export function getColorPokemon(typeColor: any) {
     rock: "#a38c21",
     bug: "#729f3f",
     ghost: "#7b62a3",
-    stell: "#9eb7b8",
+    steel: "#9eb7b8",
     fire: "#fd7d24",
     water: "#4592c4",
     grass: "#9bcc50",
@@ -29,12 +26,10 @@ export function getColorPokemon(typeColor: any) {
   };
 
   if (typeColor.length == 0) {
-    colors.push("#DFEAC1");
+    colors = "#DFEAC1";
   } else {
-    typeColor.forEach((color: any) => {
-      colors.push(allColorsAvaliable?.[color]);
-      console.log(allColorsAvaliable?.[color], color);
-    });
+    colors = allColorsAvaliable?.[typeColor];
   }
+
   return colors;
 }

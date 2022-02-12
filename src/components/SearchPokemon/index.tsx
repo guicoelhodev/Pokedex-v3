@@ -13,7 +13,7 @@ interface PokemonsType {
 function SearchPokemon() {
   const [pokemonsData, setPokemonsData] = useState<string[]>([]);
   const [errorPokemon, setErrorPokemon] = useState(false);
-  const { setName, pokemonData } = useContext(PokemonContext);
+  const { setName } = useContext(PokemonContext);
 
   const pokemon = document.getElementById("combo-box-demo") as HTMLInputElement;
 
@@ -21,7 +21,6 @@ function SearchPokemon() {
     let pokemonSelected = pokemon?.value;
     if (pokemonSelected.length != 0) {
       setName(pokemonSelected);
-      setErrorPokemon(false);
     } else return setErrorPokemon(true);
   };
 

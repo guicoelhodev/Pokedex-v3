@@ -62,7 +62,7 @@ export const AllInfoPokemon = styled.article`
   }
 `;
 export const GeneralInfo = styled.section`
-  width: clamp(300px, 100%, 800px);
+  width: clamp(300px, 100%, 600px);
   height: 100%;
   max-height: 100vh;
 
@@ -75,6 +75,8 @@ export const GeneralInfo = styled.section`
     gap: 20px;
 
     h2 {
+      padding-top: 20px;
+      padding-left: 40px;
       font-size: 3.5rem;
       color: white;
       letter-spacing: 0.3rem;
@@ -122,4 +124,5 @@ export const TypeCard = styled.li`
   font-style: bold;
   border: 1px solid white;
   border-radius: 4px;
+  filter: brightness(0.8);
 `;

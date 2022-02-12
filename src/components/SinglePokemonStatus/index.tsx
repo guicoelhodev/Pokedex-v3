@@ -12,7 +12,7 @@ function SinglePokemonStatus({ color }: Props) {
   return boolean === false ? (
     <S.AllInfoPokemon color={color[0]}>
       {pokemonData.effect.map((obj: any) => (
-        <>
+        <div key={obj.name}>
           <h3>{obj.name}</h3>
           <p>
             <span>Effect</span> {obj.effect}
@@ -20,7 +20,7 @@ function SinglePokemonStatus({ color }: Props) {
           <p>
             <span>Short effect</span> {obj.shortEffect}
           </p>
-        </>
+        </div>
       ))}
     </S.AllInfoPokemon>
   ) : (
