@@ -14,25 +14,25 @@ interface DataType {
   name: string;
   id: number;
   image: string;
-  effect: string;
-  short_effect: string;
-  height: string;
-  width: string;
+  height: number;
+  weight: number;
+  stats: Array<{ name: string; stats: string }>;
   types: Array<string>;
-  status: Array<string>;
-  abilities: Array<string>;
+  effect: Array<{ name: string; effect: string; short_effect: string }>;
 }
 
 export function PokemonData({ children }: Props) {
   const [name, setName] = useState(null);
   const [id, setId] = useState(0);
 
-  const [pokemonData, setPokemonData] = useState({
+  const [pokemonData, setPokemonData] = useState<DataType>({
     name: "",
     id: 0,
     image: "",
     height: 0,
     weight: 0,
+    stats: [],
+    types: [],
     effect: []
   });
 
@@ -60,13 +60,20 @@ export function PokemonData({ children }: Props) {
       });
 
       let imagePokemon = checkImageIsAvaliable(allDataPokemon);
+      let statsArray: Array<{ name: string; stats: string }> = [];
+      let typeArray: Array<string> = [];
 
+      getStats(allDataPokemon, statsArray);
+      getTypes(allDataPokemon, typeArray);
+      console.log(statsArray);
       setPokemonData({
         name: allDataPokemon.name,
         id: allDataPokemon.id,
         image: imagePokemon,
         height: allDataPokemon.height,
         weight: allDataPokemon.weight,
+        stats: statsArray,
+        types: typeArray,
         effect: allDataEffects
       });
     });
@@ -98,6 +105,25 @@ export function PokemonData({ children }: Props) {
     });
   }
 
+  function getStats(data: any, stats: Array<{ name: string; stats: string }>) {
+    data.stats.forEach((obj: any) => {
+      if (
+        obj.stat.name === "hp" ||
+        obj.stat.name === "attack" ||
+        obj.stat.name === "defense" ||
+        obj.stat.name === "speed"
+      )
+        return stats.push({
+          name: obj.stat.name,
+          stats: obj.base_stat
+        });
+    });
+  }
+  function getTypes(data: any, array: Array<string>) {
+    data.types.forEach((obj: { slot: number; type: { name: string; url: string } }) =>
+      array.push(obj.type.name)
+    );
+  }
   useEffect(() => {
     if (id != 0) {
       getAllData(id);

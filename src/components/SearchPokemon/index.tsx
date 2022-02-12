@@ -13,16 +13,13 @@ interface PokemonsType {
 function SearchPokemon() {
   const [pokemonsData, setPokemonsData] = useState<string[]>([]);
   const [errorPokemon, setErrorPokemon] = useState(false);
-  const [loadingState, setLoadingState] = useState(false);
-  const { name, setName, pokemonData } = useContext(PokemonContext);
+  const { setName, pokemonData } = useContext(PokemonContext);
 
   const pokemon = document.getElementById("combo-box-demo") as HTMLInputElement;
 
   const searchPokemon = () => {
     let pokemonSelected = pokemon?.value;
-
     if (pokemonSelected.length != 0) {
-      setErrorPokemon(false);
       setName(pokemonSelected);
     } else return setErrorPokemon(true);
   };
@@ -55,17 +52,11 @@ function SearchPokemon() {
             sx={{ width: 300, height: 100 }}
             renderInput={(params) => <TextField {...params} label="Search your favorite pokemon" />}
           />
-          {loadingState ? (
-            <S.LoadingPokemon onClick={() => console.log(pokemonData)}>
-              <MdCatchingPokemon />
-              <span>Loading </span>
-            </S.LoadingPokemon>
-          ) : (
-            <S.SearchBtn onClick={searchPokemon}>
-              <MdCatchingPokemon />
-              <span>Search Pokemon</span>
-            </S.SearchBtn>
-          )}
+
+          <S.SearchBtn onClick={searchPokemon}>
+            <MdCatchingPokemon />
+            <span>Search Pokemon</span>
+          </S.SearchBtn>
         </section>
         <aside>
           {errorPokemon ? (
