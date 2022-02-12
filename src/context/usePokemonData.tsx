@@ -24,6 +24,7 @@ interface DataType {
 export function PokemonData({ children }: Props) {
   const [name, setName] = useState(null);
   const [id, setId] = useState(0);
+  const [boolean, setBoolean] = useState(true);
 
   const [pokemonData, setPokemonData] = useState<DataType>({
     name: "",
@@ -39,13 +40,6 @@ export function PokemonData({ children }: Props) {
   async function getPokemon() {
     await api.get(`pokemon/${name}`).then((res) => setId(res.data.id));
   }
-
-  useEffect(() => {
-    console.log(name);
-    if (name !== null) {
-      getPokemon();
-    }
-  }, [name]);
 
   async function getAllData(idPokemon: number) {
     let allDataPokemon = null;
@@ -124,14 +118,24 @@ export function PokemonData({ children }: Props) {
       array.push(obj.type.name)
     );
   }
+
+  useEffect(() => {
+    setBoolean(true);
+    console.log(name);
+    if (name !== null) {
+      getPokemon();
+    }
+  }, [name]);
+
   useEffect(() => {
     if (id != 0) {
       getAllData(id);
+      setBoolean(false);
     }
   }, [id]);
 
   return (
-    <PokemonContext.Provider value={{ pokemonData, setName, name }}>
+    <PokemonContext.Provider value={{ pokemonData, setName, name, boolean }}>
       {children}
     </PokemonContext.Provider>
   );

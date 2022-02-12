@@ -7,12 +7,16 @@ export const changeFill = keyframes`
   90% {opacity:1}
   100% {opacity:0}
 `;
-export const SvgComponent = styled.svg`
+interface Props {
+  animate?: string;
+}
+export const SvgComponent = styled.svg<Props>`
   height: 100vh;
   width: 100%;
   position: absolute;
+  top: 0;
+  right: 0;
   transition: fill 10s linear;
   animation: ${changeFill} 10s infinite;
-  aspect-ratio: inherit;
-  z-index: 1;
+  z-index: 0;
 `;

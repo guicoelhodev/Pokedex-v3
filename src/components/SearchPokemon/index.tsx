@@ -43,31 +43,24 @@ function SearchPokemon() {
   }, []);
 
   return (
-    <>
-      <S.Container>
-        <section>
-          <S.AutoCompleteStyle
-            disablePortal
-            id="combo-box-demo"
-            options={pokemonsData}
-            sx={{ width: 300 }}
-            renderInput={(params) => <TextField {...params} label="Search your favorite pokemon" />}
-          />
+    <S.Container>
+      <article>
+        <S.AutoCompleteStyle
+          disablePortal
+          id="combo-box-demo"
+          options={pokemonsData}
+          sx={{ width: 300 }}
+          renderInput={(params) => <TextField {...params} label="Search your favorite pokemon" />}
+        />
 
-          <S.SearchBtn onClick={searchPokemon}>
-            <MdCatchingPokemon />
-            <span>Search Pokemon</span>
-          </S.SearchBtn>
-        </section>
-        <aside>
-          {errorPokemon ? (
-            <Alert severity="warning">You need to find a pokemon first !</Alert>
-          ) : (
-            <></>
-          )}
-        </aside>
-      </S.Container>
-    </>
+        <S.SearchBtn onClick={searchPokemon}>
+          <MdCatchingPokemon />
+          <span>Search Pokemon</span>
+        </S.SearchBtn>
+      </article>
+
+      {errorPokemon ? <Alert severity="warning">You need to find a pokemon first !</Alert> : <></>}
+    </S.Container>
   );
 }
 

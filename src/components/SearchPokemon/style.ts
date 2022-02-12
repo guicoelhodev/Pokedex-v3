@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styled from "styled-components";
 import { keyframes } from "styled-components";
-import { Autocomplete, Alert, TextField } from "@mui/material";
+import { Autocomplete } from "@mui/material";
 
 const loading = keyframes`
 from { transform: rotate(0)}
@@ -9,23 +9,17 @@ to { transform: rotate(360deg)}
 `;
 
 export const AutoCompleteStyle = styled(Autocomplete)``;
-export const Container = styled.div`
+export const Container = styled.article`
   padding: 50px;
-  width: clamp(280px, 90%, 600px);
-  height: auto;
+  width: 100%;
+  height: 500px;
   display: flex;
   border: 1px solid tomato;
   flex-direction: column;
 
-  section {
+  article {
     display: flex;
     gap: 20px;
-  }
-  aside {
-    z-index: 3;
-    width: clamp(280px, 90%, 330px);
-
-    text-align: center;
   }
 `;
 
