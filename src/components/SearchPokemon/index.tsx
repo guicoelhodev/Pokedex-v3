@@ -21,6 +21,7 @@ function SearchPokemon() {
     let pokemonSelected = pokemon?.value;
     if (pokemonSelected.length != 0) {
       setName(pokemonSelected);
+      setErrorPokemon(false);
     } else return setErrorPokemon(true);
   };
 
@@ -45,11 +46,11 @@ function SearchPokemon() {
     <>
       <S.Container>
         <section>
-          <Autocomplete
+          <S.AutoCompleteStyle
             disablePortal
             id="combo-box-demo"
             options={pokemonsData}
-            sx={{ width: 300, height: 100 }}
+            sx={{ width: 300 }}
             renderInput={(params) => <TextField {...params} label="Search your favorite pokemon" />}
           />
 
