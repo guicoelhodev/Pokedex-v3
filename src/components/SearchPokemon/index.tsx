@@ -21,6 +21,7 @@ function SearchPokemon() {
     let pokemonSelected = pokemon?.value;
     if (pokemonSelected.length != 0) {
       setName(pokemonSelected);
+      setErrorPokemon(false);
     } else return setErrorPokemon(true);
   };
 

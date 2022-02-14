@@ -12,8 +12,9 @@ export const AutoCompleteStyle = styled(Autocomplete)``;
 export const Container = styled.article`
   padding: 50px;
   width: 100%;
-  height: 500px;
+  height: auto;
   display: flex;
+  gap: 20px;
   border: 1px solid tomato;
   flex-direction: column;
 

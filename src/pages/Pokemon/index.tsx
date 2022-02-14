@@ -10,6 +10,7 @@ import { PokemonContext } from "../../context/usePokemonData";
 import api from "../../service/api";
 import { getColorPokemon } from "../../utils/getColorPokemon";
 import Pikachu from "../../assets/img/pikachu.png";
+import PokemonContent from "../../components/PokemonContent";
 
 function Pokemon() {
   const { width } = useWindowDimensions();
@@ -17,8 +18,10 @@ function Pokemon() {
   const [ pokemonData, setPokemonData ] = useState<any>(null);
   const [ imgPokemon, setImagePokemon ] = useState<string>();
   const [colors, setColors ] = useState(["#DFEAC1"]);
+  const [ request, setRequest ] = useState(false);
 
   useEffect(() => {
+    setRequest(false)
     async function getData() {
       api.get(`pokemon/${info.id}`).then((res) => setPokemonData(res.data));
     }
@@ -44,6 +47,7 @@ function Pokemon() {
     if (pokemonData !== null) {
       checkImageIsAvaliable(pokemonData)
       getColors(pokemonData.types)
+      setTimeout(() => setRequest(true), 1500)
     }
    
   }, [pokemonData, info ]);
@@ -54,7 +58,19 @@ function Pokemon() {
       {width <= 500 ? <SvgWaveSmartphone color={"#000"} bg={"#fff"} /> : <></>}
       <main>
         <SearchPokemon />
-        <button onClick={() => console.log(colors)}>click</button>
+        <button onClick={() => console.log(pokemonData)}>click</button>
+        <p>asuhduhdushudhudhsuhusdhudhu</p>
+        {
+          pokemonData !== null ? 
+          (
+            <PokemonContent  
+          structure={[pokemonData.weight, pokemonData.height]} 
+          abilities={pokemonData.abilities} 
+          stats={pokemonData.stats}
+          request={request}
+          color={colors[0]}/>
+          ): <></>
+        }
       </main>
       <S.GeneralInfo>
         <article>

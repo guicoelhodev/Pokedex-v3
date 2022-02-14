@@ -6,17 +6,24 @@ export const ContainerPokemon = styled.div`
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  height: 100vh;
-
+  min-height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: space-between;
 
   svg {
     animation: none;
+    path:nth-child(2) {
+      filter: brightness(0.85);
+    }
   }
 
   * {
     z-index: 1;
+  }
+  main {
+    width: 100%;
+    max-width: 700px;
   }
 `;
 
@@ -67,6 +74,7 @@ export const GeneralInfo = styled.section`
   max-height: 100vh;
 
   display: flex;
+  gap: 20px;
   flex-direction: column;
 
   article {
@@ -75,7 +83,7 @@ export const GeneralInfo = styled.section`
     gap: 20px;
 
     h2 {
-      padding-top: 20px;
+      padding-top: 60px;
       padding-left: 40px;
       font-size: 3.5rem;
       color: white;
@@ -106,9 +114,9 @@ export const GeneralInfo = styled.section`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding-right: 20px;
+    padding-right: 60px;
     img {
-      max-width: 400px;
+      max-width: 340px;
       width: 100%;
       aspect-ratio: 1/1;
       object-fit: contain;
@@ -124,5 +132,4 @@ export const TypeCard = styled.li`
   font-style: bold;
   border: 1px solid white;
   border-radius: 4px;
-  filter: brightness(0.8);
 `;
