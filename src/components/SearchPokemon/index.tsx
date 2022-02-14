@@ -5,8 +5,9 @@ import { MdCatchingPokemon } from "react-icons/md";
 import * as S from "./style";
 import api from "../../service/api";
 import { useContext, useEffect, useState } from "react";
-import { PokemonContext } from "../../context/usePokemonData";
+import { PokemonContext, PokemonData } from "../../context/usePokemonData";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
+import { PokedexContext } from "../../context/usePokedexData";
 interface PokemonsType {
   name: string;
 }
@@ -27,7 +28,6 @@ function SearchPokemon({ color }: Props) {
     if (pokemonSelected.length != 0) {
       setName(pokemonSelected);
       setErrorPokemon(false);
-      console.log(pokemonsData.length);
     } else return setErrorPokemon(true);
   };
 

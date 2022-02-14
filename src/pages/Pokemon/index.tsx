@@ -15,13 +15,13 @@ import PokemonContent from "../../components/PokemonContent";
 function Pokemon() {
   const { width } = useWindowDimensions();
   const { info } = useContext(PokemonContext);
-  const [ pokemonData, setPokemonData ] = useState<any>(null);
-  const [ imgPokemon, setImagePokemon ] = useState<string>();
-  const [colors, setColors ] = useState(["#DFEAC1"]);
-  const [ request, setRequest ] = useState(false);
+  const [pokemonData, setPokemonData] = useState<any>(null);
+  const [imgPokemon, setImagePokemon] = useState<string>();
+  const [colors, setColors] = useState(["#DFEAC1"]);
+  const [request, setRequest] = useState(false);
 
   useEffect(() => {
-    setRequest(false)
+    setRequest(false);
     async function getData() {
       api.get(`pokemon/${info.id}`).then((res) => setPokemonData(res.data));
     }
@@ -32,11 +32,11 @@ function Pokemon() {
     let tmpColors: any = [];
     array.forEach((obj: any) => {
       let tmpColor = getColorPokemon(obj.type.name);
-        tmpColors.push(tmpColor)});
+      tmpColors.push(tmpColor);
+    });
     setColors(tmpColors);
-
   }
-  function checkImageIsAvaliable(data: any){
+  function checkImageIsAvaliable(data: any) {
     if (data.sprites.other.dream_world.front_default != null) {
       return setImagePokemon(data.sprites.other.dream_world.front_default);
     } else {
@@ -45,35 +45,34 @@ function Pokemon() {
   }
   useEffect(() => {
     if (pokemonData !== null) {
-      checkImageIsAvaliable(pokemonData)
-      getColors(pokemonData.types)
-      setTimeout(() => setRequest(true), 1500)
+      checkImageIsAvaliable(pokemonData);
+      getColors(pokemonData.types);
+      setTimeout(() => setRequest(true), 1500);
     }
-   
-  }, [pokemonData, info ]);
+  }, [pokemonData, info]);
 
   return (
     <S.ContainerPokemon>
       {width > 900 ? <SvgWave color={colors[0]} bg={"#fff"} /> : <></>}
       {width <= 500 ? <SvgWaveSmartphone color={colors[0]} bg={"#fff"} /> : <></>}
       <main>
-        <SearchPokemon color={colors[0]}/>
+        <SearchPokemon color={colors[0]} />
 
-        {
-          pokemonData !== null ? 
-          (
-            <PokemonContent  
-          structure={[pokemonData.weight, pokemonData.height]} 
-          abilities={pokemonData.abilities} 
-          stats={pokemonData.stats}
-          request={request}
-          color={colors[0]}/>
-          ): <></>
-        }
+        {pokemonData !== null ? (
+          <PokemonContent
+            structure={[pokemonData.weight, pokemonData.height]}
+            abilities={pokemonData.abilities}
+            stats={pokemonData.stats}
+            request={request}
+            color={colors[0]}
+          />
+        ) : (
+          <></>
+        )}
       </main>
       <S.GeneralInfo>
         <article>
-          { pokemonData != null ?
+          {pokemonData != null ? (
             <>
               <h2>{pokemonData.name}</h2>
               <ul>
@@ -83,12 +82,12 @@ function Pokemon() {
                   </S.TypeCard>
                 ))}
               </ul>
-            </> : <></>
-          }
+            </>
+          ) : (
+            <></>
+          )}
         </article>
-        <aside>
-          {pokemonData != null ? <img src={imgPokemon} /> : <img src={Pikachu} />}
-        </aside>
+        <aside>{pokemonData != null ? <img src={imgPokemon} /> : <img src={Pikachu} />}</aside>
       </S.GeneralInfo>
     </S.ContainerPokemon>
   );

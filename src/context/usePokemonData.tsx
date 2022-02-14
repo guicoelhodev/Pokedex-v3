@@ -1,30 +1,25 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-var */
 /* eslint-disable prefer-const */
-import axios from "axios";
-import { Item } from "framer-motion/types/components/Reorder/Item";
 import { createContext, useState, useEffect, ReactElement } from "react";
 import api from "../service/api";
 
-export const PokemonContext = createContext<any>(null);
-
+interface ContextType {
+  setName: React.Dispatch<React.SetStateAction<string>>;
+  info: InfoProps | null;
+  name: string;
+}
+export const PokemonContext = createContext<ContextType | any>(null);
 interface Props {
   children: ReactElement;
 }
-interface DataType {
+interface InfoProps {
   name: string;
-  id: number;
-  image: string;
-  height: number;
-  weight: number;
-  stats: Array<{ name: string; stats: string }>;
-  types: Array<string>;
-  effect: Array<{ name: string; effect: string; short_effect: string }>;
+  id: string | null;
 }
-
 export function PokemonData({ children }: Props) {
-  const [name, setName] = useState<any>("");
-  const [info, setInfo] = useState<any>({ name: "", id: null });
+  const [name, setName] = useState<string>("");
+  const [info, setInfo] = useState<InfoProps>({ name: "", id: null });
 
   useEffect(() => {
     async function getDataP() {

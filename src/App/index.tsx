@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { GlobalStyle } from "../components/style/globalStyle";
+import PokedexContextData from "../context/usePokedexData";
 import { PokemonData } from "../context/usePokemonData";
 import HomePage from "../pages/Home";
 import Pokedex from "../pages/Pokedex";
@@ -15,11 +16,15 @@ function App() {
       <GlobalStyle />
       <HomePage />
       <EmptyDiv />
-      <PokemonData>
-        <Pokemon />
-      </PokemonData>
+      <PokedexContextData>
+        <>
+          <PokemonData>
+            <Pokemon />
+          </PokemonData>
 
-      <Pokedex />
+          <Pokedex />
+        </>
+      </PokedexContextData>
     </>
   );
 }
