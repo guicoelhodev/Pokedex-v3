@@ -25,13 +25,11 @@ interface DataType {
 export function PokemonData({ children }: Props) {
   const [name, setName] = useState<any>("");
   const [info, setInfo] = useState<any>({ name: "", id: null });
-  const [pokemonData, setPokemonData] = useState(null);
 
   useEffect(() => {
     async function getDataP() {
       api.get(`/pokemon/${name}`).then((res) => {
         setInfo({ name: res.data.name, id: res.data.id });
-        setPokemonData(res.data);
       });
     }
     if (name.length != 0) {
