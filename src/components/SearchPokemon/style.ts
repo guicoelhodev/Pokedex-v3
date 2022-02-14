@@ -8,7 +8,11 @@ from { transform: rotate(0)}
 to { transform: rotate(360deg)}
 `;
 
-export const AutoCompleteStyle = styled(Autocomplete)``;
+export const AutoCompleteStyle = styled(Autocomplete)`
+  * {
+    z-index: 1;
+  }
+`;
 export const Container = styled.article`
   padding: 50px;
   width: 100%;
@@ -37,6 +41,7 @@ export const NextPokemon = styled.button`
   background-color: inherit;
   font-size: 1rem;
   gap: 20px;
+
   svg {
     width: 40px;
     height: 40px;
@@ -66,7 +71,7 @@ export const NextPokemon = styled.button`
   }
 `;
 export const AlertStyle = styled(Alert)`
-  z-index: 0;
+  z-index: 0 !important;
 `;
 export const SearchBtn = styled.button`
   position: relative;

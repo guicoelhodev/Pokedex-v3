@@ -27,6 +27,7 @@ function SearchPokemon({ color }: Props) {
     if (pokemonSelected.length != 0) {
       setName(pokemonSelected);
       setErrorPokemon(false);
+      console.log(pokemonsData.length);
     } else return setErrorPokemon(true);
   };
 

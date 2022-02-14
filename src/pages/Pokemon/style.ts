@@ -10,6 +10,7 @@ export const ContainerPokemon = styled.div`
   height: 100%;
   display: flex;
   justify-content: space-between;
+  padding-bottom: 80px;
 
   svg {
     animation: none;
@@ -18,12 +19,14 @@ export const ContainerPokemon = styled.div`
     }
   }
 
-  * {
-    z-index: 1;
-  }
   main {
     width: 100%;
     max-width: 700px;
+  }
+  article {
+    * {
+      z-index: 1;
+    }
   }
 `;
 
@@ -115,6 +118,8 @@ export const GeneralInfo = styled.section`
     justify-content: flex-end;
     align-items: center;
     padding-right: 60px;
+    z-index: 1;
+
     img {
       max-width: 340px;
       width: 100%;
