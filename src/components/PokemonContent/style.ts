@@ -5,7 +5,7 @@ export const Loading = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 40px;
   height: 300px;
 
   span {
@@ -18,9 +18,8 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-
-  padding: 10px;
-  border: 1px solid red;
+  gap: 10px;
+  padding: 0 30px 30px 30px;
 
   * {
     z-index: 0;
@@ -32,23 +31,32 @@ export const Title = styled.h2`
   font-size: 2rem;
   font-weight: 700;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  padding: 10px 0;
+`;
+export const Span = styled.span`
+  color: ${(props) => props.color};
+  font-size: 1rem;
+  font-weight: 700;
+  filter: brightness(0.6);
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
 `;
 export const StatsList = styled.ul`
   width: 100%;
   height: auto;
   display: grid;
-  gap: 20px;
+  gap: 40px;
   grid-template-columns: repeat(2, 200px);
-  padding: 20px 0 50px;
+  padding: 30px 0 20px 0;
 `;
 
 export const ItemStat = styled.li`
   width: 100%;
-
+  -webkit-box-shadow: 2px 4px 5px -1px rgba(0, 0, 0, 0.28);
+  box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.28);
   article {
     display: flex;
     justify-content: space-between;
-    padding: 8px 14px;
+    padding: 8px 10px;
 
     svg {
       height: 25px;
@@ -101,5 +109,40 @@ export const Progress = styled.progress`
   ::-moz-progress-bar {
     background: ${(props) => props.color};
     border-radius: 8px;
+  }
+`;
+
+export const EffectsContainer = styled.section`
+  aside {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    h3 {
+      color: ${(props) => props.color};
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-family: "Montserrat", Arial, Helvetica, sans-serif;
+      padding: 20px 0 0 0;
+    }
+
+    div {
+      span {
+        padding: 2px 6px;
+        height: 30px;
+        background-color: tomato;
+        color: white;
+        font-weight: 400;
+        font-size: 1rem;
+        border-radius: 4px;
+      }
+
+      p {
+        color: #333;
+        font-size: 1rem;
+        line-height: 1.3rem;
+        font-family: "MOntserrat", Arial, Helvetica, sans-serif;
+      }
+    }
   }
 `;

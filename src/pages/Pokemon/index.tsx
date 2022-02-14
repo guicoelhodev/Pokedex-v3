@@ -58,8 +58,7 @@ function Pokemon() {
       {width <= 500 ? <SvgWaveSmartphone color={"#000"} bg={"#fff"} /> : <></>}
       <main>
         <SearchPokemon />
-        <button onClick={() => console.log(pokemonData)}>click</button>
-        <p>asuhduhdushudhudhsuhusdhudhu</p>
+
         {
           pokemonData !== null ? 
           (

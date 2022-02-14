@@ -15,7 +15,6 @@ export const Container = styled.article`
   height: auto;
   display: flex;
   gap: 20px;
-  border: 1px solid tomato;
   flex-direction: column;
 
   article {
