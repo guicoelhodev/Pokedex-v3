@@ -7,7 +7,6 @@ import api from "../../service/api";
 import { useContext, useEffect, useState } from "react";
 import { PokemonContext, PokemonData } from "../../context/usePokemonData";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
-import { PokedexContext } from "../../context/usePokedexData";
 interface PokemonsType {
   name: string;
 }
