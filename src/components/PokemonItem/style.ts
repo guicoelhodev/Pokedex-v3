@@ -1,11 +1,19 @@
 import styled from "styled-components";
 
+export const LoadingContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+
+  display: grid;
+  place-items: center;
+`;
 export const ItemContainer = styled.li`
   width: 340px;
   height: auto;
   display: flex;
   flex-direction: column;
-  background-color: ${(props) => props.color};
+  background-color: ${(props) => (props.color ? props.color : "whitesmoke")};
   padding: 0 10px;
   border-radius: 8px;
   border: 1px solid ${(props) => props.color};

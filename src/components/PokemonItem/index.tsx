@@ -2,6 +2,7 @@
 import { memo, useEffect, useState } from "react";
 import api from "../../service/api";
 import { getColorPokemon } from "../../utils/getColorPokemon";
+import { TailSpin } from "react-loader-spinner";
 import * as S from "./style";
 
 interface Props {
@@ -18,8 +19,10 @@ interface TypePokemonData {
 
 function PokemonItem({ name }: Props) {
   const [pokemonData, setPokemonData] = useState<TypePokemonData>();
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     async function getData() {
       api.get(`pokemon/${name}`).then((res) => {
         let tmpData = res.data;
@@ -53,37 +56,44 @@ function PokemonItem({ name }: Props) {
       });
     }
     if (name.length !== 0 && name != undefined) getData();
+    setLoading(false);
   }, [name]);
   return (
     <S.ItemContainer color={pokemonData?.typeColors?.[0].color}>
-      <>
-        <header>
-          <h4>{pokemonData?.name}</h4>
-          <span>#{pokemonData?.id}</span>
-        </header>
-        <main>
-          <S.Information>
-            <article>
-              {pokemonData?.typeColors.map((item) => (
-                <S.type key={item.nameT} color={item.color}>
-                  {item.nameT}
-                </S.type>
-              ))}
-            </article>
-            <article>
-              <div>
-                <span>height </span>
-                <p>{pokemonData?.height} m</p>
-              </div>
-              <div>
-                <span>weight </span>
-                <p>{pokemonData?.weight} kg</p>
-              </div>
-            </article>
-          </S.Information>
-          <S.Image src={pokemonData?.image} alt="pokemon image" loading="lazy" />
-        </main>
-      </>
+      {isLoading ? (
+        <S.LoadingContainer>
+          <TailSpin ariaLabel="loading-indicator" />
+        </S.LoadingContainer>
+      ) : (
+        <>
+          <header>
+            <h4>{pokemonData?.name}</h4>
+            <span>#{pokemonData?.id}</span>
+          </header>
+          <main>
+            <S.Information>
+              <article>
+                {pokemonData?.typeColors.map((item) => (
+                  <S.type key={item.nameT} color={item.color}>
+                    {item.nameT}
+                  </S.type>
+                ))}
+              </article>
+              <article>
+                <div>
+                  <span>height </span>
+                  <p>{pokemonData?.height} m</p>
+                </div>
+                <div>
+                  <span>weight </span>
+                  <p>{pokemonData?.weight} kg</p>
+                </div>
+              </article>
+            </S.Information>
+            <S.Image src={pokemonData?.image} alt="pokemon image" loading="lazy" />
+          </main>
+        </>
+      )}
     </S.ItemContainer>
   );
 }
