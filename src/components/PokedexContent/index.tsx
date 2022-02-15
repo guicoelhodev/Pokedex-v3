@@ -3,9 +3,9 @@
 import * as S from "./style";
 import PikachuRun from "../../assets/img/gif/pikachu_run.gif";
 import Pagination from "@mui/material/Pagination";
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { PokedexContext } from "../../context/usePokedexData";
+import React, { useEffect, useRef, useState } from "react";
 import api from "../../service/api";
+import PokemonItem from "../PokemonItem";
 
 function PokedexContent() {
   const selectRef = useRef<HTMLSelectElement>(null);
@@ -47,16 +47,17 @@ function PokedexContent() {
           setPokemonsPage(Number(selectRef.current?.value));
         }}>
         <p>Pokemons per page: </p>
-        <select ref={selectRef}>
-          <option>12</option>
-          <option>24</option>
-          <option>48</option>
-        </select>
+        <div className="custom-select">
+          <select ref={selectRef}>
+            <option>12</option>
+            <option>24</option>
+            <option>48</option>
+          </select>
+        </div>
       </S.PokemonsPage>
-      <button onClick={() => console.log(dataApiNames, pokemonsPage)}>click me</button>
       <S.PokemonList>
         {dataApiNames !== null ? (
-          dataApiNames.map((name: string) => <S.PokemonItem key={name}>{name}</S.PokemonItem>)
+          dataApiNames.map((name: string) => <PokemonItem key={name} name={name} />)
         ) : (
           <></>
         )}

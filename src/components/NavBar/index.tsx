@@ -22,7 +22,7 @@ function NavBar({ color }: Props) {
         </li>
         <li>
           <S.LinkSocial
-            href="https://github.com/GuiCoelho-S"
+            href="https://github.com/GuiCoelho-S/Pokedex-v3"
             target="_blank"
             rel="noreferrer"
             color={color}

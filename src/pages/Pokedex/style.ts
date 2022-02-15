@@ -6,11 +6,11 @@ export const ContainerPokemon = styled.div`
   width: 100%;
   min-height: 100vh;
   height: 100%;
-  background-color: lightblue;
+  background-color: #f0eeee;
 
   main {
     width: 100%;
-    border: 1px solid blue;
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;

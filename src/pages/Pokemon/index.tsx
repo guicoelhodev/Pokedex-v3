@@ -37,7 +37,10 @@ function Pokemon() {
     setColors(tmpColors);
   }
   function checkImageIsAvaliable(data: any) {
-    if (data.sprites.other.dream_world.front_default != null) {
+    if(data.sprites.other?.["official-artwork"].front_default != null){
+      return setImagePokemon(data.sprites.other?.["official-artwork"].front_default);
+    }
+    else if (data.sprites.other.dream_world.front_default != null) {
       return setImagePokemon(data.sprites.other.dream_world.front_default);
     } else {
       return setImagePokemon(data.sprites.front_default);

@@ -22,4 +22,25 @@ button {
 a {
   text-decoration: none;
 }
+
+::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #47acd2;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #357d99;
+  }
+  
+  body {
+    scrollbar-color: #47acd2 #f1f1f1;
+    scrollbar-width: thin;
+  }
 `;

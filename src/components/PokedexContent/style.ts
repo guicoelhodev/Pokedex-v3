@@ -4,7 +4,6 @@ export const Container = styled.div`
   width: clamp(300px, 100%, 800px);
   min-height: 600px;
   height: 100%;
-  border: 1px solid red;
 
   display: flex;
   flex-direction: column;
@@ -21,7 +20,7 @@ export const Container = styled.div`
     h2 {
       font-size: 3rem;
       color: #d71515;
-      font-family: "Montserrat";
+      font-family: "Montserrat", Arial;
     }
     img {
       height: 80px;
@@ -44,20 +43,38 @@ export const PokemonsPage = styled.aside`
   p {
     font-size: 1.2rem;
   }
+  select {
+    background-color: transparent;
+    border: 1px solid #389ec6;
+    padding: 5px 10px;
+    font-size: 1rem;
+    border-radius: 4px;
+
+    :focus {
+      color: white;
+      background-color: #389ec6;
+      outline: 1px solid white;
+    }
+    * {
+      background-color: white;
+      color: black;
+    }
+  }
+  option {
+    appearance: unset;
+  }
 `;
 
 export const PokemonList = styled.ul`
   width: 100%;
-  max-width: 800px;
-  height: 400px;
+  max-width: 900px;
+  height: 600px;
   overflow: scroll;
-  border: 1px solid orange;
+  overflow-x: hidden;
 
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
-`;
-export const PokemonItem = styled.li`
-  height: 200px;
+  gap: 30px;
+  scrollbar-width: thin;
 `;
