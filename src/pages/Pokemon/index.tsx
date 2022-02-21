@@ -17,7 +17,6 @@ function Pokemon() {
   const [pokemonData, setPokemonData] = useState<any>(null);
   const [imgPokemon, setImagePokemon] = useState<string>();
   const [colors, setColors] = useState(["#e0ea77"]);
-  const [prevColor, setPrevColor ] = useState<string | undefined>();
   const [request, setRequest] = useState(false);
 
   useEffect(() => {
@@ -53,14 +52,9 @@ function Pokemon() {
       setTimeout(() => setRequest(true), 1500);
     }
   }, [pokemonData, info]);
-
-  useEffect(() => {
-    setPrevColor(colors[0])
-  }, []);
-
   
   return (
-    <S.ContainerPokemon oldColor={prevColor} newColor={colors[0]}>
+    <S.ContainerPokemon >
       {width > 900 ? <SvgWave color={colors[0]} bg={"#fff"} /> : <></>}
       {width <= 500 ? <SvgWaveSmartphone color={colors[0]} bg={"#fff"} /> : <></>}
       <main>
@@ -86,7 +80,6 @@ function Pokemon() {
               <h2>{pokemonData.name}</h2>
               <button onClick={() => {
                 console.log(colors[0])
-                console.log(prevColor)
               }}>oauhuash</button>
 
               <ul>

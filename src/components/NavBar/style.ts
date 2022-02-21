@@ -15,7 +15,6 @@ export const showDetails = keyframes`
 `;
 
 export const NavBar = styled.nav`
-  border: 1px solid pink;
   width: 80px;
   height: 100vh;
   background-color: inherit;
