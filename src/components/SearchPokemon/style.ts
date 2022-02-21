@@ -30,6 +30,24 @@ export const Container = styled.article`
     gap: 40px;
     z-index: 0;
   }
+
+  @media (max-width: 900px) {
+    align-items: center;
+  }
+  @media (max-width: 500px) {
+    width: 100%;
+    padding: 40px 0 0 0;
+
+    article {
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 40px;
+    }
+    aside {
+      padding: 0 20px;
+      gap: 10px;
+    }
+  }
 `;
 export const NextPokemon = styled.button`
   padding: 8px;
@@ -119,6 +137,45 @@ export const SearchBtn = styled.button`
   }
   :active {
     filter: brightness(1.3);
+  }
+
+  @media (max-width: 600px) {
+    width: 50px;
+    height: 50px;
+
+    :hover,
+    :focus {
+      width: 50px;
+      span {
+        display: none;
+      }
+    }
+  }
+  @media (max-width: 500px) {
+    justify-content: space-evenly;
+    width: 220px;
+    background-color: #c94747;
+    color: white;
+    border-radius: 8px;
+    outline: 1px solid transparent;
+
+    svg {
+      fill: #fff;
+      transform: rotate(180deg);
+    }
+    span {
+      display: block;
+    }
+  }
+  :hover,
+  :focus {
+    width: 220px;
+    svg {
+      transform: rotate(0deg);
+    }
+    span {
+      display: block;
+    }
   }
 `;
 

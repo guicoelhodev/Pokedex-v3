@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 export const ContainerPokemon = styled.div`
   position: relative;
@@ -27,6 +27,14 @@ export const ContainerPokemon = styled.div`
   article {
     * {
       z-index: 1;
+    }
+  }
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+
+    main {
+      max-width: none;
     }
   }
 `;
@@ -126,6 +134,47 @@ export const GeneralInfo = styled.section`
       width: 100%;
       aspect-ratio: 1/1;
       object-fit: contain;
+    }
+  }
+  @media (max-width: 900px) {
+    max-width: none;
+    width: 100%;
+    order: -1;
+
+    aside {
+      padding: 0;
+      justify-content: center;
+      padding-bottom: 30px;
+
+      img {
+        padding: 20px;
+        border-radius: 50%;
+        width: 240px;
+        background-color: ${(props) => props.color};
+        filter: brightness(0.85);
+      }
+    }
+  }
+  article {
+    ul {
+      padding: 0;
+      justify-content: center;
+      gap: 20px;
+    }
+    h2 {
+      padding: 0;
+      text-align: center;
+    }
+  }
+  @media (max-width: 500px) {
+    flex-direction: column-reverse;
+
+    aside {
+      img {
+        background-color: transparent;
+        padding: 20px 0 0 0;
+        border-radius: 0;
+      }
     }
   }
 `;

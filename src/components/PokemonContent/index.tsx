@@ -16,11 +16,6 @@ interface Props {
   color: string;
 }
 
-interface PropsEffect {
-  name: string;
-  effect: string;
-  short_effect: string;
-}
 function PokemonContent({ structure, abilities, stats, request, color }: Props) {
   const statsSvg = [
     <GiHealthNormal key="hp" />,

@@ -10,6 +10,8 @@ export const changeFill = keyframes`
 export const SvgComponent = styled.svg`
   width: 100%;
   position: absolute;
+  top: 0;
+  right: 0;
   transition: fill 10s linear;
   animation: ${changeFill} 10s infinite;
 `;

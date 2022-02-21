@@ -56,7 +56,7 @@ function Pokemon() {
   return (
     <S.ContainerPokemon >
       {width > 900 ? <SvgWave color={colors[0]} bg={"#fff"} /> : <></>}
-      {width <= 500 ? <SvgWaveSmartphone color={colors[0]} bg={"#fff"} /> : <></>}
+      {width <= 500 ? <SvgWaveSmartphone color={colors[0]} bg={"transparent"} /> : <></>}
       <main>
         <SearchPokemon color={colors[0]} />
 
@@ -73,14 +73,11 @@ function Pokemon() {
         )}
         
       </main>
-      <S.GeneralInfo>
+      <S.GeneralInfo color={colors[0]}>
         <article>
           {pokemonData != null ? (
             <>
               <h2>{pokemonData.name}</h2>
-              <button onClick={() => {
-                console.log(colors[0])
-              }}>oauhuash</button>
 
               <ul>
                 {pokemonData.types.map((obj: any, index: number) => (

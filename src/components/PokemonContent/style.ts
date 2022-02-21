@@ -24,6 +24,9 @@ export const Container = styled.div`
   * {
     z-index: 0;
   }
+  @media (max-width: 500px) {
+    padding: 40px 0 0 0;
+  }
 `;
 
 export const Title = styled.h2`
@@ -32,6 +35,10 @@ export const Title = styled.h2`
   font-weight: 700;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   padding: 10px 0;
+
+  @media (max-width: 500px) {
+    text-align: center;
+  }
 `;
 export const Span = styled.span`
   color: ${(props) => props.color};
@@ -39,6 +46,10 @@ export const Span = styled.span`
   font-weight: 700;
   filter: brightness(0.6);
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
+
+  @media (max-width: 500px) {
+    padding: 0 0 10px 10px;
+  }
 `;
 export const StatsList = styled.ul`
   width: 100%;
@@ -47,6 +58,21 @@ export const StatsList = styled.ul`
   gap: 40px;
   grid-template-columns: repeat(2, 200px);
   padding: 30px 0 20px 0;
+
+  @media (max-width: 500px) {
+    gap: 20px;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(2, 180px);
+  }
+  @media (max-width: 375px) {
+    gap: 10px;
+    grid-template-columns: repeat(2, 160px);
+  }
+  @media (max-width: 350px) {
+    gap: 5px;
+  }
 `;
 
 export const ItemStat = styled.li`
@@ -82,6 +108,14 @@ export const ItemStat = styled.li`
 
     span {
       font-size: 1.1rem;
+    }
+  }
+  @media (max-width: 500px) {
+    section {
+      padding: 0 4px 20px 4px;
+      span {
+        font-size: 0.85rem;
+      }
     }
   }
 `;
