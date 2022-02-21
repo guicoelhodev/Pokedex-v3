@@ -25,7 +25,7 @@ export const Container = styled.div`
     z-index: 0;
   }
   @media (max-width: 500px) {
-    padding: 40px 0 0 0;
+    padding: 40px 14px 0 14px;
   }
 `;
 

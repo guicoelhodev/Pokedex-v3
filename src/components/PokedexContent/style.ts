@@ -34,6 +34,21 @@ export const Container = styled.div`
     padding: 20px;
     padding-bottom: 40px;
   }
+  @media (max-width: 450px) {
+    article {
+      h2 {
+        font-size: 2.2rem;
+      }
+    }
+  }
+  @media (max-width: 375px) {
+    article {
+      h2 {
+        font-size: 1.8rem;
+        text-align: center;
+      }
+    }
+  }
 `;
 
 export const PokemonsPage = styled.aside`

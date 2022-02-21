@@ -39,7 +39,7 @@ export const Container = styled.article`
     padding: 40px 0 0 0;
 
     article {
-      flex-direction: column-reverse;
+      flex-direction: column;
       align-items: center;
       gap: 40px;
     }
@@ -106,7 +106,7 @@ export const SearchBtn = styled.button`
 
   padding: 5px;
   transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), border-radius 0.2s linear;
-
+  z-index: 0 !important;
   svg {
     width: 40px;
     height: 40px;

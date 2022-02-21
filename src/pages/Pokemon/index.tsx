@@ -56,7 +56,7 @@ function Pokemon() {
   return (
     <S.ContainerPokemon >
       {width > 900 ? <SvgWave color={colors[0]} bg={"#fff"} /> : <></>}
-      {width <= 500 ? <SvgWaveSmartphone color={colors[0]} bg={"transparent"} /> : <></>}
+      {width <= 500 && pokemonData !== null ? <SvgWaveSmartphone color={colors[0]} bg={"transparent"} /> : <></>}
       <main>
         <SearchPokemon color={colors[0]} />
 
@@ -73,7 +73,7 @@ function Pokemon() {
         )}
         
       </main>
-      <S.GeneralInfo color={colors[0]}>
+      <S.GeneralInfo color={colors[0]} order={pokemonData !== null ? true : false}>
         <article>
           {pokemonData != null ? (
             <>

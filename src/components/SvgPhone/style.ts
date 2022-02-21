@@ -8,10 +8,14 @@ export const changeFill = keyframes`
   100% {opacity:0}
 `;
 export const SvgComponent = styled.svg`
-  width: 100%;
+  width: 100vw !important;
   position: absolute;
   top: 0;
   right: 0;
   transition: fill 10s linear;
   animation: ${changeFill} 10s infinite;
+
+  * {
+    width: 100vw !important;
+  }
 `;

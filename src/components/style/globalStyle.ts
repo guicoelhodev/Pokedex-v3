@@ -42,5 +42,6 @@ a {
   body {
     scrollbar-color: #47acd2 #f1f1f1;
     scrollbar-width: thin;
+
   }
 `;

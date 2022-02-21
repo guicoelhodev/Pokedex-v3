@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+interface PropsGeneral {
+  order: boolean;
+}
 export const ContainerPokemon = styled.div`
   position: relative;
   margin: 0 auto;
@@ -32,7 +35,6 @@ export const ContainerPokemon = styled.div`
 
   @media (max-width: 900px) {
     flex-direction: column;
-
     main {
       max-width: none;
     }
@@ -80,7 +82,7 @@ export const AllInfoPokemon = styled.article`
     }
   }
 `;
-export const GeneralInfo = styled.section`
+export const GeneralInfo = styled.section<PropsGeneral>`
   width: clamp(300px, 100%, 600px);
   height: 100%;
   max-height: 100vh;
@@ -139,7 +141,7 @@ export const GeneralInfo = styled.section`
   @media (max-width: 900px) {
     max-width: none;
     width: 100%;
-    order: -1;
+    order: ${(props) => (props.order === false ? 0 : -1)};
 
     aside {
       padding: 0;
@@ -169,11 +171,24 @@ export const GeneralInfo = styled.section`
   @media (max-width: 500px) {
     flex-direction: column-reverse;
 
+    article {
+      flex-direction: column-reverse;
+    }
     aside {
       img {
+        width: 200px;
         background-color: transparent;
         padding: 20px 0 0 0;
         border-radius: 0;
+      }
+    }
+  }
+  @media (max-width: 400px) {
+    article {
+      flex-direction: column-reverse;
+
+      h2 {
+        font-size: 2.4rem;
       }
     }
   }
