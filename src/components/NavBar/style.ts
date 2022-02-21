@@ -15,8 +15,8 @@ export const showDetails = keyframes`
 `;
 
 export const NavBar = styled.nav`
-  min-width: 80px;
-  width: 180px;
+  border: 1px solid pink;
+  width: 80px;
   height: 100vh;
   background-color: inherit;
   z-index: 1;
@@ -42,12 +42,11 @@ export const NavBar = styled.nav`
   @media (max-width: 700px) {
     ul {
       padding-right: 5px;
+      justify-content: flex-start;
     }
   }
   @media (max-width: 500px) {
-    height: 85%;
     ul {
-      justify-content: flex-end;
       height: 100%;
       gap: 10px;
     }

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: clamp(300px, 100%, 800px);
-  min-height: 600px;
+  width: clamp(300px, 100%, 1200px);
+  min-height: 800px;
   height: 100%;
 
   display: flex;
@@ -10,7 +10,7 @@ export const Container = styled.div`
   justify-content: space-between;
   gap: 20px;
 
-  padding: 40px 20px;
+  padding: 40px;
   article {
     width: 100%;
     display: flex;
@@ -29,6 +29,10 @@ export const Container = styled.div`
 
   footer {
     margin: 0 auto;
+  }
+  @media (max-width: 500px) {
+    padding: 20px;
+    padding-bottom: 40px;
   }
 `;
 
@@ -66,12 +70,9 @@ export const PokemonsPage = styled.aside`
 `;
 
 export const PokemonList = styled.ul`
-  width: 100%;
-  max-width: 900px;
   height: 600px;
   overflow: scroll;
   overflow-x: hidden;
-
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

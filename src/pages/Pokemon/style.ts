@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const ContainerPokemon = styled.div`
   position: relative;
@@ -14,6 +14,7 @@ export const ContainerPokemon = styled.div`
 
   svg {
     animation: none;
+    transition: all 0.8s linear;
     path:nth-child(2) {
       filter: brightness(0.85);
     }
@@ -121,7 +122,7 @@ export const GeneralInfo = styled.section`
     z-index: 1;
 
     img {
-      max-width: 340px;
+      max-width: 360px;
       width: 100%;
       aspect-ratio: 1/1;
       object-fit: contain;

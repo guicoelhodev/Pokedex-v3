@@ -9,7 +9,6 @@ import { useContext, useEffect, useState } from "react";
 import { PokemonContext } from "../../context/usePokemonData";
 import api from "../../service/api";
 import { getColorPokemon } from "../../utils/getColorPokemon";
-import Pikachu from "../../assets/img/pikachu.png";
 import PokemonContent from "../../components/PokemonContent";
 
 function Pokemon() {
@@ -17,7 +16,8 @@ function Pokemon() {
   const { info } = useContext(PokemonContext);
   const [pokemonData, setPokemonData] = useState<any>(null);
   const [imgPokemon, setImagePokemon] = useState<string>();
-  const [colors, setColors] = useState(["#DFEAC1"]);
+  const [colors, setColors] = useState(["#e0ea77"]);
+  const [prevColor, setPrevColor ] = useState<string | undefined>();
   const [request, setRequest] = useState(false);
 
   useEffect(() => {
@@ -54,8 +54,13 @@ function Pokemon() {
     }
   }, [pokemonData, info]);
 
+  useEffect(() => {
+    setPrevColor(colors[0])
+  }, []);
+
+  
   return (
-    <S.ContainerPokemon>
+    <S.ContainerPokemon oldColor={prevColor} newColor={colors[0]}>
       {width > 900 ? <SvgWave color={colors[0]} bg={"#fff"} /> : <></>}
       {width <= 500 ? <SvgWaveSmartphone color={colors[0]} bg={"#fff"} /> : <></>}
       <main>
@@ -72,12 +77,18 @@ function Pokemon() {
         ) : (
           <></>
         )}
+        
       </main>
       <S.GeneralInfo>
         <article>
           {pokemonData != null ? (
             <>
               <h2>{pokemonData.name}</h2>
+              <button onClick={() => {
+                console.log(colors[0])
+                console.log(prevColor)
+              }}>oauhuash</button>
+
               <ul>
                 {pokemonData.types.map((obj: any, index: number) => (
                   <S.TypeCard key={obj.type.name} color={`${colors[index]}`}>
@@ -90,7 +101,7 @@ function Pokemon() {
             <></>
           )}
         </article>
-        <aside>{pokemonData != null ? <img src={imgPokemon} /> : <img src={Pikachu} />}</aside>
+        <aside>{pokemonData != null ? <img src={imgPokemon} /> : <></>}</aside>
       </S.GeneralInfo>
     </S.ContainerPokemon>
   );

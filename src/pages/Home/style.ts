@@ -6,14 +6,15 @@ export const ContainerHome = styled.div`
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  height: 100vh;
-
+  min-height: 100vh;
+  height: 100%;
   display: flex;
 
   main {
     display: flex;
-    justify-content: space-between;
     width: 100%;
+    height: auto;
+    justify-content: space-evenly;
 
     aside {
       display: grid;
@@ -32,6 +33,7 @@ export const ContainerHome = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
+    height: 100%;
     flex-direction: column;
     padding: 30px 0 20px 30px;
   }
@@ -112,7 +114,12 @@ export const pokemonImg = styled.img`
     width: 300px;
   }
   @media (max-width: 500px) {
-    width: 220px;
+    padding-top: 20px;
+    width: 200px;
+
+    :hover {
+      scale: 1;
+    }
   }
 `;
 
@@ -129,7 +136,7 @@ export const Purpose = styled.div`
   justify-content: space-between;
   align-self: center;
   align-items: center;
-
+  padding: 0 !important;
   div {
     display: flex;
     align-self: center;
@@ -183,9 +190,7 @@ export const Purpose = styled.div`
     }
   }
   @media (max-width: 700px) {
-    h2 {
-      padding-bottom: 20px !important;
-    }
+    width: 94%;
   }
   @media (max-width: 500px) {
     ul {
@@ -198,9 +203,8 @@ export const Purpose = styled.div`
       a {
         font-size: 1rem;
       }
-
       p {
-        padding: 0 20px;
+        padding-top: 20px;
       }
 
       ul {

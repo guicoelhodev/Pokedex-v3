@@ -7,10 +7,8 @@ export const changeFill = keyframes`
   90% {opacity:1}
   100% {opacity:0}
 `;
-interface Props {
-  animate?: string;
-}
-export const SvgComponent = styled.svg<Props>`
+
+export const SvgComponent = styled.svg`
   height: 100vh;
   width: 100%;
   position: absolute;

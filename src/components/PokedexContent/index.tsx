@@ -6,8 +6,10 @@ import Pagination from "@mui/material/Pagination";
 import React, { useEffect, useRef, useState } from "react";
 import api from "../../service/api";
 import PokemonItem from "../PokemonItem";
+import useWindowDimensions from "../../hook/useWindowDimensions";
 
 function PokedexContent() {
+  const { width } = useWindowDimensions();
   const selectRef = useRef<HTMLSelectElement>(null);
   const [pokemonsPage, setPokemonsPage] = useState<number>(12);
   const [totalPages, setTotalPages] = useState<undefined | number>();
@@ -63,7 +65,17 @@ function PokedexContent() {
         )}
       </S.PokemonList>
       <footer>
-        <Pagination count={totalPages} color="primary" page={page} onChange={handleChange} />
+        {width > 600 || width === 600 ? (
+          <Pagination count={totalPages} color="primary" page={page} onChange={handleChange} />
+        ) : (
+          <Pagination
+            count={totalPages}
+            color="primary"
+            size="small"
+            page={page}
+            onChange={handleChange}
+          />
+        )}
       </footer>
     </S.Container>
   );
