@@ -1,11 +1,9 @@
-/* eslint-disable prefer-const */
 import { useState } from "react";
+import * as S from "./style";
 import SvgWave from "../../components/SvgElement";
 import Blastoise from "../../assets/img/blastoise.png";
 import Entei from "../../assets/img/entei.png";
 import Charizard from "../../assets/img/charizard.png";
-
-import * as S from "./style";
 import NavBar from "../../components/NavBar";
 import ToolsComponent from "../../components/Tools";
 import SvgWaveSmartphone from "../../components/SvgPhone";

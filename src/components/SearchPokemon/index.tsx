@@ -1,11 +1,9 @@
-/* eslint-disable no-var */
-/* eslint-disable prefer-const */
 import { TextField } from "@mui/material";
 import { MdCatchingPokemon } from "react-icons/md";
 import * as S from "./style";
 import api from "../../service/api";
 import { useContext, useEffect, useState } from "react";
-import { PokemonContext, PokemonData } from "../../context/usePokemonData";
+import { PokemonContext } from "../../context/usePokemonData";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 interface PokemonsType {
   name: string;

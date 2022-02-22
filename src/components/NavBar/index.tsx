@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import * as S from "./style";
 import { AiFillLinkedin, AiFillGithub, AiFillInstagram } from "react-icons/ai";
 import useWindowDimensions from "../../hook/useWindowDimensions";

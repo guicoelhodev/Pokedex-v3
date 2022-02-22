@@ -33,14 +33,3 @@ const SvgFilter = ({ type }: Props) => {
 };
 
 export default SvgFilter;
-
-/*
-
-
-    vitejs: <LibToolsSvg src={ViteJs} alt="ViteJS tool icon" />,
-    styled: <LibToolsSvg src={SComponents} alt="Styled-components tool icon" />,
-    typescript: <LibToolsSvg src={Typescript} alt="Typescript tool icon" />,
-    figma: <LibToolsSvg src={Figma} alt="Figma tool icon" />,
-    react: <LibToolsSvg src={ReactJs} alt="React js tool icon" />
-    
-*/

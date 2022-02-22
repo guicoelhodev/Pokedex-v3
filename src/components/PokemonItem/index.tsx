@@ -1,4 +1,3 @@
-/* eslint-disable prefer-const */
 import { memo, useEffect, useState } from "react";
 import api from "../../service/api";
 import { getColorPokemon } from "../../utils/getColorPokemon";

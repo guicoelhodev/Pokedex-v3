@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-var */
-/* eslint-disable prefer-const */
 import { createContext, useState, useEffect, ReactElement } from "react";
 import api from "../service/api";
 

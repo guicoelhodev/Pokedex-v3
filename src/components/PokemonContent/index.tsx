@@ -1,4 +1,4 @@
-/* eslint-disable prefer-const */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as S from "./style";
 import { ThreeCircles } from "react-loader-spinner";
 import { GiHealthNormal } from "react-icons/gi";
@@ -11,7 +11,7 @@ import axios from "axios";
 interface Props {
   structure: Array<number>;
   abilities: Array<{ ability: { name: string; url: string } }>;
-  stats: Array<{ base_stat: string; effort: number; stat: { name: string; url: string } }>;
+  stats: Array<{ base_experience: number; effort: number; state: { name: string; url: string } }>;
   request: boolean;
   color: string;
 }
@@ -29,20 +29,22 @@ function PokemonContent({ structure, abilities, stats, request, color }: Props) 
 
   useEffect(() => {
     async function getEffects() {
-      let tmpEffect: any = [];
-      abilities.forEach((obj: any) => {
+      let tmpEffect: Array<{ name: string; effect: string; short_effect: string }> = [];
+      abilities.forEach((obj: { ability: { name: string; url: string } }) => {
         axios.get(obj.ability.url).then((res) => {
           let data = res.data;
 
-          data.effect_entries.forEach((item: any) => {
-            if (item.language.name === "en") {
-              tmpEffect.push({
-                name: data.name,
-                effect: item.effect,
-                short_effect: item.short_effect
-              });
+          data.effect_entries.forEach(
+            (item: { language: { name: string }; effect: string; short_effect: string }) => {
+              if (item.language.name === "en") {
+                tmpEffect.push({
+                  name: data.name,
+                  effect: item.effect,
+                  short_effect: item.short_effect
+                });
+              }
             }
-          });
+          );
         });
       });
       setEffects(tmpEffect);

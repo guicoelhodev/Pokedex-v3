@@ -1,7 +1,6 @@
-/* eslint-disable no-var */
-/* eslint-disable prefer-const */
 export function getColorPokemon(typeColor: string) {
   let colors = "";
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const allColorsAvaliable: any = {
     normal: "#a4acaf",
     fighting: "#d56723",

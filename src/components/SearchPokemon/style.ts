@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styled from "styled-components";
 import { keyframes } from "styled-components";
 import { Autocomplete, Alert } from "@mui/material";
@@ -99,6 +98,7 @@ export const SearchBtn = styled.button`
 
   display: flex;
   align-items: center;
+  gap: 20px;
 
   background-color: transparent;
   border: 1px solid red;
@@ -111,11 +111,13 @@ export const SearchBtn = styled.button`
     width: 40px;
     height: 40px;
     fill: #c94747;
-    transition: all 0.4s;
+    transition: all 0.2s;
     filter: brightness(1);
+    transform: rotate(0deg);
   }
   span {
     display: none;
+    opacity: 0;
     font-size: 1rem;
   }
 
@@ -133,6 +135,7 @@ export const SearchBtn = styled.button`
     }
     span {
       display: block;
+      opacity: 1;
     }
   }
   :active {

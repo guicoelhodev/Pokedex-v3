@@ -1,9 +1,8 @@
+import * as S from "./style";
 interface Type {
   color: string;
   bg: string;
 }
-import * as React from "react";
-import * as S from "./style";
 
 const SvgWaveMobile = (props: Type) => (
   <S.SvgComponent width={540} height={960} xmlns="http://www.w3.org/2000/svg" {...props}>

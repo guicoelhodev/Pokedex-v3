@@ -1,6 +1,4 @@
-import * as React from "react";
 import * as S from "./style";
-
 interface Type {
   color: string;
   bg: string;

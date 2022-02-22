@@ -106,10 +106,6 @@ export const pokemonImg = styled.img`
   animation: ${showPokemon} 10s infinite;
   transition: scale cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s;
 
-  :hover {
-    scale: 1.12;
-  }
-
   @media (max-width: 950px) {
     width: 300px;
   }

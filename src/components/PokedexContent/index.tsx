@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable prefer-const */
 import * as S from "./style";
 import PikachuRun from "../../assets/img/gif/pikachu_run.gif";
 import Pagination from "@mui/material/Pagination";
@@ -18,6 +16,8 @@ function PokedexContent() {
 
   function handleChange(event: React.ChangeEvent<unknown>, value: number) {
     setPage(value);
+    document.getElementById("pokemonList")?.scrollTo(0, 0);
+    document.getElementById("title")?.scrollIntoView();
   }
 
   useEffect(() => {
@@ -30,9 +30,10 @@ function PokedexContent() {
     async function getAllNamesPokemons() {
       api
         .get(`pokemon?limit=${pokemonsPage}&offset=${pokemonsPage * (page - 1)}`)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .then((res: any) => {
           let tmpGetAllNames: Array<string> = [];
-          res.data.results.forEach((obj: any) => tmpGetAllNames.push(obj.name));
+          res.data.results.forEach((obj: { name: string }) => tmpGetAllNames.push(obj.name));
           setDataApiNames(tmpGetAllNames);
         });
     }
@@ -41,7 +42,7 @@ function PokedexContent() {
   return (
     <S.Container>
       <article>
-        <h2>Poke react</h2>
+        <h2 id="title">Poke react</h2>
         <img src={PikachuRun} alt="pikachu running for anywhere, gif image" />
       </article>
       <S.PokemonsPage
@@ -57,7 +58,7 @@ function PokedexContent() {
           </select>
         </div>
       </S.PokemonsPage>
-      <S.PokemonList>
+      <S.PokemonList id="pokemonList">
         {dataApiNames !== null ? (
           dataApiNames.map((name: string) => <PokemonItem key={name} name={name} />)
         ) : (

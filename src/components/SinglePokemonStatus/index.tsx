@@ -1,5 +1,4 @@
-/* eslint-disable prefer-const */
-import { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { useContext } from "react";
 import { PokemonContext } from "../../context/usePokemonData";
 import * as S from "./style";
 
