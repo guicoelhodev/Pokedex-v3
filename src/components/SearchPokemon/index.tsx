@@ -1,101 +1,80 @@
 import { TextField } from "@mui/material";
-import { MdCatchingPokemon } from "react-icons/md";
-import * as S from "./style";
-import api from "../../service/api";
-import { useContext, useEffect, useState } from "react";
-import { PokemonContext } from "../../context/usePokemonData";
+import { Dispatch, SetStateAction } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
-interface PokemonsType {
-  name: string;
-}
+import { useGetAllPokemons } from "../../service/http/GET/useGetAllPokemons";
+import * as S from "./style";
+
 interface Props {
   color: string;
+  pokemonName: string;
+  setPokemonName: Dispatch<SetStateAction<string>>;
 }
-function SearchPokemon({ color }: Props) {
-  const [pokemonsData, setPokemonsData] = useState<string[]>([]);
-  const [errorPokemon, setErrorPokemon] = useState(false);
-  const { setName, info } = useContext(PokemonContext);
-  const [prevPokemon, setPrevPokemon] = useState("");
-  const [nextPokemon, setNextPokemon] = useState("");
-  const pokemon = document.getElementById("combo-box-demo") as HTMLInputElement;
-  let id = info.id;
 
-  const searchPokemon = () => {
-    let pokemonSelected = pokemon?.value;
-    if (pokemonSelected.length != 0) {
-      setName(pokemonSelected);
-      setErrorPokemon(false);
-    } else return setErrorPokemon(true);
+function SearchPokemon({ color, pokemonName, setPokemonName }: Props) {
+  const { data: allPokemonsList } = useGetAllPokemons();
+
+  const getNextPokemon = (type: "prev" | "next", currentPokemonName: string) => {
+    if (!allPokemonsList) return "";
+    const pokemonIndex = allPokemonsList.findIndex((i) => i.name === currentPokemonName);
+
+    const tmpNextPokemonIndex = type === "next" ? pokemonIndex + 1 : pokemonIndex - 1;
+
+    return allPokemonsList[tmpNextPokemonIndex].name;
   };
-
-  useEffect(() => {
-    var allPokemons: Array<string> = [];
-
-    for (let i = 1; i < 9; i++) {
-      api
-        .get(`/generation/${i}/`)
-        .then((res) => {
-          let data = res.data.pokemon_species;
-
-          data.forEach((element: PokemonsType) => {
-            allPokemons = [...allPokemons, element.name];
-          });
-        })
-        .then(() => setPokemonsData(allPokemons));
-    }
-  }, []);
-
-  useEffect(() => {
-    async function getNextPokemon() {
-      api.get(`pokemon/${id + 1}`).then((res) => setNextPokemon(res.data.name));
-    }
-    async function getPrevPokemon() {
-      if (id > 1) {
-        api.get(`pokemon/${id - 1}`).then((res) => setPrevPokemon(res.data.name));
-      }
-    }
-    if (info.id !== null) {
-      getPrevPokemon();
-      getNextPokemon();
-    }
-  }, [id]);
 
   return (
     <S.Container>
-      <article>
-        <S.AutoCompleteStyle
-          disablePortal
-          id="combo-box-demo"
-          options={pokemonsData}
-          sx={{ width: 300 }}
-          renderInput={(params) => <TextField {...params} label="Search your favorite pokemon" />}
-        />
-
-        <S.SearchBtn onClick={searchPokemon}>
-          <MdCatchingPokemon />
-          <span>Search Pokemon</span>
-        </S.SearchBtn>
-      </article>
-      <aside>
-        {pokemon?.value.length != 0 ? (
-          <>
-            <S.NextPokemon color={color} onClick={() => setName(prevPokemon)}>
-              <BsArrowLeftCircleFill />
-              <p>{prevPokemon}</p>
-            </S.NextPokemon>
-            <S.NextPokemon color={color} onClick={() => setName(nextPokemon)}>
-              <p>{nextPokemon}</p>
-              <BsArrowRightCircleFill />
-            </S.NextPokemon>
-          </>
-        ) : (
-          <></>
-        )}
-      </aside>
-      {errorPokemon ? (
-        <S.AlertStyle severity="warning">You need to find a pokemon first !</S.AlertStyle>
+      {!allPokemonsList ? (
+        <p>Carregando pokemons</p>
       ) : (
-        <></>
+        <>
+          <article>
+            <S.AutoCompleteStyle
+              disablePortal
+              id="combo-box-demo"
+              options={allPokemonsList.map((i) => i.name)}
+              sx={{ width: 300 }}
+              onChange={(_, value) => {
+                setPokemonName(value as string);
+              }}
+              renderInput={(params) => (
+                <TextField {...params} label="Search your favorite pokemon" />
+              )}
+              value={pokemonName}
+            />
+          </article>
+          <aside>
+            {pokemonName !== allPokemonsList[0].name && (
+              <S.NextPokemon
+                color={color}
+                onClick={() => {
+                  const currentPokemonIndex = allPokemonsList.findIndex(
+                    (i) => i.name === pokemonName
+                  );
+
+                  setPokemonName(allPokemonsList[currentPokemonIndex - 1].name);
+                }}>
+                <BsArrowLeftCircleFill />
+                <p>{getNextPokemon("prev", pokemonName)}</p>
+              </S.NextPokemon>
+            )}
+
+            {pokemonName !== allPokemonsList.at(-1)?.name && (
+              <S.NextPokemon
+                color={color}
+                onClick={() => {
+                  const currentPokemonIndex = allPokemonsList.findIndex(
+                    (i) => i.name === pokemonName
+                  );
+
+                  setPokemonName(allPokemonsList[currentPokemonIndex + 1].name);
+                }}>
+                <p>{getNextPokemon("next", pokemonName)}</p>
+                <BsArrowRightCircleFill />
+              </S.NextPokemon>
+            )}
+          </aside>
+        </>
       )}
     </S.Container>
   );
