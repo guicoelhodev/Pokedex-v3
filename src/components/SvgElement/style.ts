@@ -8,8 +8,19 @@ export const changeFill = keyframes`
   100% {opacity:0}
 `;
 
+export const Container = styled.div`
+  position: absolute;
+  /* background-color: red; */
+  width: 100%;
+
+  img {
+    /* height: 100vh; */
+    transform: translateX(5rem);
+  }
+`;
+
 export const SvgComponent = styled.svg`
-  height: 100vh;
+  height: 100vh !important;
   width: 100%;
   position: absolute;
   top: 0;
