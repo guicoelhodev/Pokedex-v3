@@ -26,7 +26,6 @@ function PokedexItem({ name }: Props) {
       api.get(`pokemon/${name}`).then((res) => {
         let tmpData = res.data;
         let image = "";
-        // console.log(tmpData);
         let tmpColors: Array<{ nameT: string; color: string }> = [];
 
         tmpData.types.forEach((obj: any) => {

@@ -22,7 +22,6 @@ export function SearchPokemon({ color, pokemonName, setPokemonName }: Props) {
     return allPokemonsList[tmpNextPokemonIndex].name;
   };
 
-  console.log(pokemonName);
   return (
     <S.Container>
       {!allPokemonsList ? (

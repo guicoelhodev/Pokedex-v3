@@ -12,6 +12,7 @@ export const Container = styled.div`
   position: absolute;
   /* background-color: red; */
   width: 100%;
+  z-index: -1;
 
   svg {
     margin-left: 14rem;

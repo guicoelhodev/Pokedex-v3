@@ -17,7 +17,7 @@ export function App() {
     <QueryClientProvider client={queryClient}>
       <GlobalStyle />
       <Home />
-      <EmptyDiv />
+      {/* <EmptyDiv /> */}
       <SinglePokemon />
 
       <Pokedex />
