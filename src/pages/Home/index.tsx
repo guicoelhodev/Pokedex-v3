@@ -4,10 +4,11 @@ import SvgWave from "../../components/SvgElement";
 import Blastoise from "../../assets/img/blastoise.png";
 import Entei from "../../assets/img/entei.png";
 import Charizard from "../../assets/img/charizard.png";
-import NavBar from "../../components/NavBar";
-import ToolsComponent from "../../components/Tools";
 import SvgWaveSmartphone from "../../components/SvgPhone";
 import useWindowDimensions from "../../hook/useWindowDimensions";
+import SvgFilter from "../../Filters/tools_svg";
+
+const arr = ["vite js", "styled components", "typescript", "figma", "react JS"];
 
 function HomePage() {
   const colors = ["#DFCB98", "#81D3E5", "#AB9785"];
@@ -15,7 +16,7 @@ function HomePage() {
   const { width } = useWindowDimensions();
 
   const changeColorSvg = () => {
-    console.log(i);
+    // console.log(i);
 
     setTimeout(() => {
       if (i == 2) {
@@ -60,7 +61,14 @@ function HomePage() {
                 <li>Acessibility & SEO</li>
               </ul>
             </S.PurposeContent>
-            <ToolsComponent />
+            <S.ContainerTools>
+              {arr.map((item, index) => (
+                <li key={item}>
+                  <SvgFilter type={index} />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </S.ContainerTools>
           </S.ToolSection>
           <aside>
             {colors[i] === "#DFCB98" ? (
