@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { GlobalStyle } from "../components/style/globalStyle";
-import HomePage from "../pages/Home";
-import Pokedex from "../pages/Pokedex";
-import Pokemon from "../pages/Pokemon";
+import { GlobalStyle } from "../style/globalStyle";
+import { Home } from "../components/Home";
+import { Pokedex } from "../components/Pokedex";
+import { SinglePokemon } from "../components/SinglePokemon";
 
 import { QueryClient, QueryClientProvider } from "react-query";
 
@@ -12,16 +12,16 @@ const EmptyDiv = styled.div`
   width: 100%;
   height: 300px;
 `;
-function App() {
+export function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <GlobalStyle />
-      <HomePage />
+      <Home />
       <EmptyDiv />
-      <Pokemon />
+      <SinglePokemon />
+
       <Pokedex />
+      {/* <Pokedex /> */}
     </QueryClientProvider>
   );
 }
-
-export default App;

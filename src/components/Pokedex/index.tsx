@@ -4,9 +4,9 @@ import Pagination from "@mui/material/Pagination";
 import React, { useEffect, useRef, useState } from "react";
 import api from "../../service/api";
 import useWindowDimensions from "../../hook/useWindowDimensions";
-import PokedexItem from "../PokedexItem";
+import PokedexItem from "./PokedexItem";
 
-function PokedexContent() {
+export function Pokedex() {
   const { width } = useWindowDimensions();
   const selectRef = useRef<HTMLSelectElement>(null);
   const [pokemonsPage, setPokemonsPage] = useState<number>(12);
@@ -81,5 +81,3 @@ function PokedexContent() {
     </S.Container>
   );
 }
-
-export default PokedexContent;

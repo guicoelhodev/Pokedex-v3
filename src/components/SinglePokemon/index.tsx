@@ -3,13 +3,10 @@ import { GiHealthNormal } from "react-icons/gi";
 import { RiSwordFill } from "react-icons/ri";
 import { BsFillShieldFill } from "react-icons/bs";
 import { AiFillThunderbolt } from "react-icons/ai";
-import { IResponsePokemonInfo } from "../../service/http/GET/useGetPokemonInfo/types";
 import { getColorPokemon } from "../../utils/getColorPokemon";
 import { useGetPokemonAbility } from "../../service/http/GET/useGetPokemonAbility";
-
-interface IPokemonContent {
-  data: IResponsePokemonInfo | undefined;
-}
+import { useState } from "react";
+import { useGetPokemonInfo } from "../../service/http/GET/useGetPokemonInfo";
 
 const svgsByStat = {
   hp: <GiHealthNormal />,
@@ -18,7 +15,11 @@ const svgsByStat = {
   speed: <AiFillThunderbolt />
 };
 
-export function PokemonGeneralInfo({ data }: IPokemonContent) {
+export function SinglePokemon() {
+  const [currentPokemonName, setCurrentPokemonName] = useState("bulbasaur");
+
+  const { data } = useGetPokemonInfo(currentPokemonName);
+
   const { data: allAbilities } = useGetPokemonAbility(
     data?.abilities.map((i) => i.ability.url) ?? null
   );

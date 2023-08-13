@@ -1,33 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as S from "./style";
-import SvgWave from "../../components/SvgElement";
+import SvgWave from "../UI/SvgElement";
 import Blastoise from "../../assets/img/blastoise.png";
 import Entei from "../../assets/img/entei.png";
 import Charizard from "../../assets/img/charizard.png";
-import SvgWaveSmartphone from "../../components/SvgPhone";
+import SvgWaveSmartphone from "../UI/SvgPhone";
 import useWindowDimensions from "../../hook/useWindowDimensions";
-import SvgFilter from "../../Filters/tools_svg";
 
-const arr = ["vite js", "styled components", "typescript", "figma", "react JS"];
+import { tools } from "./data";
 
-function HomePage() {
+export function Home() {
   const colors = ["#DFCB98", "#81D3E5", "#AB9785"];
   const [i, setI] = useState(0);
   const { width } = useWindowDimensions();
 
-  const changeColorSvg = () => {
-    // console.log(i);
-
-    setTimeout(() => {
-      if (i == 2) {
-        setI(0);
-      } else {
-        setI(i + 1);
-      }
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setI((prevI) => (prevI === 2 ? 0 : prevI + 1));
     }, 10000);
-  };
 
-  changeColorSvg();
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
   return (
     <S.View bgColor={colors[i]}>
       <S.Container>
@@ -62,10 +58,10 @@ function HomePage() {
               </ul>
             </S.PurposeContent>
             <S.ContainerTools>
-              {arr.map((item, index) => (
-                <li key={item}>
-                  <SvgFilter type={index} />
-                  <span>{item}</span>
+              {tools.map((item) => (
+                <li key={item.name}>
+                  <img src={item.src} alt={item.name} />
+                  <span>{item.name}</span>
                 </li>
               ))}
             </S.ContainerTools>
@@ -86,5 +82,3 @@ function HomePage() {
     </S.View>
   );
 }
-
-export default HomePage;

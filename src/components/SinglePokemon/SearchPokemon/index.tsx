@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import { Dispatch, SetStateAction } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
-import { useGetAllPokemons } from "../../service/http/GET/useGetAllPokemons";
+import { useGetAllPokemons } from "../../../service/http/GET/useGetAllPokemons";
 import * as S from "./style";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
   setPokemonName: Dispatch<SetStateAction<string>>;
 }
 
-function SearchPokemon({ color, pokemonName, setPokemonName }: Props) {
+export function SearchPokemon({ color, pokemonName, setPokemonName }: Props) {
   const { data: allPokemonsList } = useGetAllPokemons();
 
   const getNextPokemon = (type: "prev" | "next", currentPokemonName: string) => {
@@ -22,6 +22,7 @@ function SearchPokemon({ color, pokemonName, setPokemonName }: Props) {
     return allPokemonsList[tmpNextPokemonIndex].name;
   };
 
+  console.log(pokemonName);
   return (
     <S.Container>
       {!allPokemonsList ? (
@@ -35,6 +36,7 @@ function SearchPokemon({ color, pokemonName, setPokemonName }: Props) {
               options={allPokemonsList.map((i) => i.name)}
               sx={{ width: 300 }}
               onChange={(_, value) => {
+                if (!value) return;
                 setPokemonName(value as string);
               }}
               renderInput={(params) => (
@@ -79,5 +81,3 @@ function SearchPokemon({ color, pokemonName, setPokemonName }: Props) {
     </S.Container>
   );
 }
-
-export default SearchPokemon;
