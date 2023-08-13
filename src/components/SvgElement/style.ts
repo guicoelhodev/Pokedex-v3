@@ -13,19 +13,7 @@ export const Container = styled.div`
   /* background-color: red; */
   width: 100%;
 
-  img {
-    /* height: 100vh; */
-    transform: translateX(5rem);
+  svg {
+    margin-left: 14rem;
   }
-`;
-
-export const SvgComponent = styled.svg`
-  height: 100vh !important;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  transition: fill 10s linear;
-  animation: ${changeFill} 10s infinite;
-  z-index: 0;
 `;
