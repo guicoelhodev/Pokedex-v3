@@ -7,6 +7,8 @@ import { getColorPokemon } from "../../utils/getColorPokemon";
 import { useGetPokemonAbility } from "../../service/http/GET/useGetPokemonAbility";
 import { useState } from "react";
 import { useGetPokemonInfo } from "../../service/http/GET/useGetPokemonInfo";
+import SvgWave from "../../components/UI/SvgElement";
+import { SearchPokemon } from "./SearchPokemon";
 
 const svgsByStat = {
   hp: <GiHealthNormal />,
@@ -26,44 +28,60 @@ export function SinglePokemon() {
 
   const color = getColorPokemon(data?.types[0].type.name ?? "normal");
   return (
-    <S.Container>
-      {!data ? (
-        <p>Loading</p>
-      ) : (
+    <S.View bgColor={color}>
+      <S.Container>
         <S.GridContainer>
+          <SvgWave color={color} bg={"#fff"} />
+          {/* {width <= 500 ? <SvgWaveSmartphone color={colors[i]} bg={"#fff"} /> : <></>} */}
           <section>
-            <S.Title color={color}>Pokemon stats</S.Title>
-            <S.Span color={color}>Height {data.height / 10} m</S.Span>
-            <S.Span color={color}>Weight {data.weight / 10} kg</S.Span>
-            <S.StatsList>
-              {data.stats.map((item, index) => {
-                const statName = item.stat.name;
-                if (!Object.keys(svgsByStat).includes(statName)) return;
+            <SearchPokemon
+              pokemonName={currentPokemonName}
+              setPokemonName={setCurrentPokemonName}
+              color={color}
+            />
 
-                return (
-                  <S.ItemStat key={index} color={color}>
-                    <article>
-                      <p>{statName}</p>
-                      {svgsByStat[statName as keyof typeof svgsByStat]}
-                    </article>
-                    <section>
-                      <span>{item.base_stat}</span>
-                      <S.Progress value={item.base_stat} max="200" color={color} />
-                      <span>200</span>
-                    </section>
-                  </S.ItemStat>
-                );
-              })}
-            </S.StatsList>
+            {!data ? (
+              <p>loading</p>
+            ) : (
+              <>
+                <S.Title color={color}>Pokemon stats</S.Title>
+                <S.Text color={color}>Height {data.height / 10} m</S.Text>
+                <S.Text color={color}>Weight {data.weight / 10} kg</S.Text>
+
+                <S.StatsList>
+                  {data.stats.map((item, index) => {
+                    const statName = item.stat.name;
+                    if (!Object.keys(svgsByStat).includes(statName)) return;
+
+                    return (
+                      <S.ItemStat key={index} color={color}>
+                        <article>
+                          <p>{statName}</p>
+                          {svgsByStat[statName as keyof typeof svgsByStat]}
+                        </article>
+                        <section>
+                          <span>{item.base_stat}</span>
+                          <S.Progress value={item.base_stat} max="200" color={color} />
+                          <span>200</span>
+                        </section>
+                      </S.ItemStat>
+                    );
+                  })}
+                </S.StatsList>
+              </>
+            )}
           </section>
           <section>
             <S.PokemonImage>
-              <img
-                src={
-                  data.sprites.other.dream_world.front_default ??
-                  data.sprites.other["official-artwork"].front_default
-                }
-              />
+              <div>
+                <h2>{data?.name}</h2>
+                <img
+                  src={
+                    data?.sprites.other.dream_world.front_default ??
+                    data?.sprites.other["official-artwork"].front_default
+                  }
+                />
+              </div>
             </S.PokemonImage>
           </section>
 
@@ -74,20 +92,22 @@ export function SinglePokemon() {
                 <div>
                   <p>
                     <span>Effect</span>{" "}
-                    {item.effect_entries.filter((i) => i.language.name === "en")[0].effect}
+                    {item.effect_entries.filter((i) => i.language.name === "en")[0]?.effect ??
+                      "No data"}
                   </p>
                 </div>
                 <div>
                   <p>
                     <span>Short Effect</span>{" "}
-                    {item.effect_entries.filter((i) => i.language.name === "en")[0].short_effect}
+                    {item.effect_entries.filter((i) => i.language.name === "en")[0]?.short_effect ??
+                      "No data"}
                   </p>
                 </div>
               </aside>
             ))}
           </S.EffectsContainer>
         </S.GridContainer>
-      )}
-    </S.Container>
+      </S.Container>
+    </S.View>
   );
 }

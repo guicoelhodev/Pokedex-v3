@@ -118,7 +118,6 @@ export const PurposeContent = styled.section`
 
 export const pokemonImg = styled.img`
   transform: translateX(100px);
-  margin-right: 2rem;
   opacity: 0;
   aspect-ratio: 1/1;
   width: 30rem;

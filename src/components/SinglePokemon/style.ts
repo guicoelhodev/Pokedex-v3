@@ -1,30 +1,55 @@
 import styled from "styled-components";
 
-export const Loading = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  height: 300px;
+interface IStyledProps {
+  bgColor: string;
+}
 
-  span {
-    font-size: 1.2rem;
-    color: #444;
+// export const Loading = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   gap: 40px;
+//   height: 300px;
+
+//   span {
+//     font-size: 1.2rem;
+//     color: #444;
+//   }
+// `;
+
+export const View = styled.div<IStyledProps>`
+  position: relative;
+  width: 100%;
+
+  :after {
+    content: "";
+    background-color: ${(p) => p.bgColor};
+    position: absolute;
+    top: 0;
+    width: calc((100% - 80rem) / 2 - 8rem);
+    right: 0;
+    height: 718px;
   }
 `;
+
 export const Container = styled.div`
-  width: 100%;
+  width: min(100%, 80rem);
+  height: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
 
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 20px;
+  padding-top: 0;
 `;
 
 export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 `;
 
 export const Title = styled.h2`
@@ -36,16 +61,31 @@ export const Title = styled.h2`
 `;
 
 export const PokemonImage = styled.article`
+  height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
+  align-items: flex-end;
 
   img {
     width: 20rem;
     aspect-ratio: 1/1;
     object-fit: contain;
   }
+
+  div {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+      font-size: 3rem;
+      color: #fff;
+    }
+  }
 `;
-export const Span = styled.span`
+export const Text = styled.p`
   color: ${(props) => props.color};
   font-size: 1rem;
   font-weight: 700;
@@ -134,7 +174,7 @@ export const Progress = styled.progress`
 
 export const EffectsContainer = styled.section`
   grid-column: span 2;
-  padding-top: 4rem;
+
   aside {
     display: flex;
     flex-direction: column;

@@ -7,7 +7,6 @@ export const AutoCompleteStyle = styled(Autocomplete)`
   }
 `;
 export const Container = styled.article`
-  padding: 1rem;
   padding-top: 5rem;
   width: 100%;
   height: auto;

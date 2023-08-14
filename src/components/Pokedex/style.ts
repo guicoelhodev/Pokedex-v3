@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: clamp(300px, 100%, 1200px);
-  min-height: 800px;
+  width: min(100%, 80rem);
   height: 100%;
+  min-height: 100vh;
+
+  margin: 0 auto;
 
   display: flex;
   flex-direction: column;
@@ -30,24 +32,15 @@ export const Container = styled.div`
   footer {
     margin: 0 auto;
   }
-  @media (max-width: 500px) {
-    padding: 20px;
-    padding-bottom: 40px;
-  }
-  @media (max-width: 450px) {
-    article {
-      h2 {
-        font-size: 2.2rem;
-      }
-    }
-  }
-  @media (max-width: 375px) {
-    article {
-      h2 {
-        font-size: 1.8rem;
-        text-align: center;
-      }
-    }
+
+  :after {
+    content: "";
+    background-color: ${(p) => p.color};
+    position: absolute;
+    top: 0;
+    width: calc((100% - 80rem) / 2 - 8rem);
+    right: 0;
+    height: 718px;
   }
 `;
 
@@ -85,7 +78,6 @@ export const PokemonsPage = styled.aside`
 `;
 
 export const PokemonList = styled.ul`
-  height: 600px;
   overflow: scroll;
   overflow-x: hidden;
   display: flex;
