@@ -60,7 +60,7 @@ export function SearchPokemon({ color, pokemonName, setPokemonName }: Props) {
               </S.NextPokemon>
             )}
 
-            {pokemonName !== allPokemonsList.at(-1)?.name && (
+            {pokemonName !== allPokemonsList[allPokemonsList.length]?.name && (
               <S.NextPokemon
                 color={color}
                 onClick={() => {

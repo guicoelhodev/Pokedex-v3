@@ -4,7 +4,7 @@ import SvgWave from "../UI/SvgElement";
 import Blastoise from "../../assets/img/blastoise.png";
 import Entei from "../../assets/img/entei.png";
 import Charizard from "../../assets/img/charizard.png";
-import SvgWaveSmartphone from "../UI/SvgPhone";
+import { SvgWaveMobile } from "../UI/SvgPhone";
 import useWindowDimensions from "../../hook/useWindowDimensions";
 
 import { tools } from "./data";
@@ -28,7 +28,7 @@ export function Home() {
     <S.View bgColor={colors[i]}>
       <S.Container>
         {width > 900 ? <SvgWave color={colors[i]} bg={"#fff"} /> : <></>}
-        {width < 500 ? <SvgWaveSmartphone color={colors[i]} bg={"#fff"} /> : <></>}
+        {width < 500 ? <SvgWaveMobile color={colors[i]} bg={"#fff"} /> : <></>}
         <S.MainContent>
           <S.ToolSection>
             <S.Title color={colors[i]}>Pokedex V3</S.Title>
