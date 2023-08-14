@@ -1,6 +1,6 @@
 import { memo, useEffect, useState } from "react";
-import api from "../../service/api";
-import { getColorPokemon } from "../../utils/getColorPokemon";
+import api from "../../../service/api";
+import { getColorPokemon } from "../../../utils/getColorPokemon";
 import { TailSpin } from "react-loader-spinner";
 import * as S from "./style";
 

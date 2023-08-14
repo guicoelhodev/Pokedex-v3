@@ -71,10 +71,6 @@ export const PurposeContent = styled.section`
   flex-direction: column;
   gap: 2rem;
 
-  h1 {
-    padding-top: 4rem;
-  }
-
   color: ${(props) => props.color};
   transition: color 2s cubic-bezier(0.23, 1, 0.32, 1);
 
@@ -125,60 +121,17 @@ export const pokemonImg = styled.img`
   margin-right: 2rem;
   opacity: 0;
   aspect-ratio: 1/1;
-  display: block;
-  width: 380px;
+  width: 30rem;
   object-fit: contain;
   animation: ${showPokemon} 10s infinite;
   transition: scale cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s;
-
-  @media (max-width: 950px) {
-    width: 300px;
-  }
-  @media (max-width: 500px) {
-    padding-top: 20px;
-    width: 200px;
-
-    :hover {
-      scale: 1;
-    }
-  }
 `;
 
 export const Title = styled.h1`
+  padding-top: 3rem;
   font-size: 3rem;
   color: ${(props) => props.color};
   transition: color 2s cubic-bezier(0.23, 1, 0.32, 1);
-`;
-
-export const ContainerShowTools = styled.div`
-  width: 100%;
-  padding-top: 20px;
-  display: flex;
-  justify-content: space-between;
-
-  button {
-    display: grid;
-    place-items: center;
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
-    border: 1px solid transparent;
-    border-radius: 50%;
-
-    svg {
-      width: 100%;
-      height: 100%;
-      transition: all 1s linear;
-      fill: ${(props) => props.color};
-      filter: brightness(0.6);
-    }
-
-    :focus {
-      svg {
-        transform: rotate(90deg);
-      }
-    }
-  }
 `;
 
 export const ContainerTools = styled.ul`
@@ -208,21 +161,11 @@ export const ContainerTools = styled.ul`
 
     img {
       border-radius: 8px;
+      width: 4rem;
     }
-  }
 
-  @media (max-width: 500px) {
-    justify-content: space-evenly;
-    padding: 0;
     span {
-      max-width: 80px;
-      padding-top: 5px;
-      font-size: 0.8rem;
-      text-align: center;
-    }
-
-    li {
-      justify-content: center;
+      transform: translateY(5px);
     }
   }
 `;

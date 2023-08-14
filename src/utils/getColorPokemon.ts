@@ -1,7 +1,6 @@
 export function getColorPokemon(typeColor: string) {
   let colors = "";
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const allColorsAvaliable: any = {
+  const allColorsAvaliable = {
     normal: "#a4acaf",
     fighting: "#d56723",
     flying: "#7ecdf7",
@@ -27,7 +26,7 @@ export function getColorPokemon(typeColor: string) {
   if (typeColor.length == 0) {
     colors = "#DFEAC1";
   } else {
-    colors = allColorsAvaliable?.[typeColor];
+    colors = allColorsAvaliable[typeColor as keyof typeof allColorsAvaliable];
   }
 
   return colors;
