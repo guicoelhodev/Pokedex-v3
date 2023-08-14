@@ -8,6 +8,7 @@ export const changeFill = keyframes`
   100% {opacity:0}
 `;
 export const SvgComponent = styled.svg`
+  z-index: -1;
   width: 100vw !important;
   position: absolute;
   top: 0;
