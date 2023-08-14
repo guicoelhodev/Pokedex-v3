@@ -1,44 +1,31 @@
-import * as S from "./style";
 import PikachuRun from "../../assets/img/gif/pikachu_run.gif";
 import Pagination from "@mui/material/Pagination";
-import React, { useEffect, useRef, useState } from "react";
-import api from "../../service/api";
+import React, { useRef, useState } from "react";
 import useWindowDimensions from "../../hook/useWindowDimensions";
+import { useGetPokedex } from "../../service/http/GET/useGetPokedex";
 import PokedexItem from "./PokedexItem";
+
+import * as S from "./style";
 
 export function Pokedex() {
   const { width } = useWindowDimensions();
-  const selectRef = useRef<HTMLSelectElement>(null);
   const [pokemonsPage, setPokemonsPage] = useState<number>(12);
-  const [totalPages, setTotalPages] = useState<undefined | number>();
   const [page, setPage] = useState(1);
-  const [dataApiNames, setDataApiNames] = useState<Array<string> | null>(null);
 
-  function handleChange(event: React.ChangeEvent<unknown>, value: number) {
+  const totalPages = Math.ceil(898 / pokemonsPage);
+  const selectRef = useRef<HTMLSelectElement>(null);
+
+  function handleChange(_: React.ChangeEvent<unknown>, value: number) {
     setPage(value);
     document.getElementById("pokemonList")?.scrollTo(0, 0);
     document.getElementById("title")?.scrollIntoView();
   }
 
-  useEffect(() => {
-    let tmpTotalPages = 898 / pokemonsPage;
-    let tmpNumber = Math.ceil(tmpTotalPages);
-    setTotalPages(tmpNumber);
-  }, [pokemonsPage]);
+  const { data: pokedexContent } = useGetPokedex({
+    limit: pokemonsPage,
+    offSet: pokemonsPage * (page - 1)
+  });
 
-  useEffect(() => {
-    async function getAllNamesPokemons() {
-      api
-        .get(`pokemon?limit=${pokemonsPage}&offset=${pokemonsPage * (page - 1)}`)
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .then((res: any) => {
-          let tmpGetAllNames: Array<string> = [];
-          res.data.results.forEach((obj: { name: string }) => tmpGetAllNames.push(obj.name));
-          setDataApiNames(tmpGetAllNames);
-        });
-    }
-    getAllNamesPokemons();
-  }, [page, selectRef.current?.value]);
   return (
     <S.Container>
       <article>
@@ -59,8 +46,8 @@ export function Pokedex() {
         </div>
       </S.PokemonsPage>
       <S.PokemonList id="pokemonList">
-        {dataApiNames !== null ? (
-          dataApiNames.map((name: string) => <PokedexItem key={name} name={name} />)
+        {pokedexContent ? (
+          pokedexContent.results.map(({ name }) => <PokedexItem key={name} name={name} />)
         ) : (
           <></>
         )}
