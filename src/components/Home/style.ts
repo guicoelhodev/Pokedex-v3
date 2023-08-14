@@ -55,6 +55,14 @@ export const MainContent = styled.main`
   height: 100vh;
 
   padding: 1rem;
+
+  @media (max-width: 900px) {
+    flex-direction: column-reverse;
+
+    img {
+      width: 15rem;
+    }
+  }
 `;
 
 export const ToolSection = styled.section`
@@ -62,6 +70,15 @@ export const ToolSection = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-width: 900px) {
+    align-items: center;
+    gap: 1rem;
+
+    h1 {
+      padding-top: 0;
+    }
+  }
 `;
 
 export const PurposeContent = styled.section`
@@ -165,6 +182,15 @@ export const ContainerTools = styled.ul`
 
     span {
       transform: translateY(5px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    li {
+      justify-content: flex-end;
+      img {
+        width: 3rem;
+      }
     }
   }
 `;

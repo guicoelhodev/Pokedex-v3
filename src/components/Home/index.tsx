@@ -28,7 +28,7 @@ export function Home() {
     <S.View bgColor={colors[i]}>
       <S.Container>
         {width > 900 ? <SvgWave color={colors[i]} bg={"#fff"} /> : <></>}
-        {width <= 500 ? <SvgWaveSmartphone color={colors[i]} bg={"#fff"} /> : <></>}
+        {width < 500 ? <SvgWaveSmartphone color={colors[i]} bg={"#fff"} /> : <></>}
         <S.MainContent>
           <S.ToolSection>
             <S.Title color={colors[i]}>Pokedex V3</S.Title>

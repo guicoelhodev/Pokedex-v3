@@ -4,7 +4,7 @@ interface Type {
   bg: string;
 }
 
-const SvgWaveMobile = (props: Type) => (
+export const SvgWaveMobile = (props: Type) => (
   <S.SvgComponent width={540} height={960} xmlns="http://www.w3.org/2000/svg" {...props}>
     <path fill={props.bg} d="M0 0h540v960H0z" />
     <path
@@ -13,5 +13,3 @@ const SvgWaveMobile = (props: Type) => (
     />
   </S.SvgComponent>
 );
-
-export default SvgWaveMobile;

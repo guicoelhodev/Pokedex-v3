@@ -4,20 +4,6 @@ interface IStyledProps {
   bgColor: string;
 }
 
-// export const Loading = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   gap: 40px;
-//   height: 300px;
-
-//   span {
-//     font-size: 1.2rem;
-//     color: #444;
-//   }
-// `;
-
 export const View = styled.div<IStyledProps>`
   position: relative;
   width: 100%;
@@ -44,12 +30,17 @@ export const Container = styled.div`
   gap: 10px;
   padding: 20px;
   padding-top: 0;
+  position: relative;
 `;
 
-export const GridContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+export const MainContent = styled.div`
+  display: flex;
+  justify-content: space-between;
   gap: 1rem;
+
+  @media (max-width: 860px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const Title = styled.h2`
@@ -81,6 +72,33 @@ export const PokemonImage = styled.article`
 
     h2 {
       font-size: 3rem;
+      letter-spacing: 0.2rem;
+      color: #fff;
+    }
+  }
+
+  aside {
+    width: 21rem;
+    aspect-ratio: 1/1;
+  }
+
+  @media (max-width: 860px) {
+    div {
+      padding: 1rem;
+      border-radius: 50%;
+      margin: 0 auto;
+      img {
+        width: 10rem;
+      }
+
+      h2 {
+        color: ${(p) => p.color};
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    div h2 {
       color: #fff;
     }
   }
@@ -99,6 +117,19 @@ export const StatsList = styled.ul`
   gap: 40px;
   grid-template-columns: repeat(2, 200px);
   padding: 30px 0 20px 0;
+
+  @media (max-width: 900px) {
+    justify-content: center;
+  }
+  @media (max-width: 480px) {
+    gap: 1rem;
+    grid-template-columns: 1fr;
+
+    li {
+      width: 300px;
+      justify-self: center;
+    }
+  }
 `;
 
 export const ItemStat = styled.li`
@@ -108,6 +139,7 @@ export const ItemStat = styled.li`
   article {
     display: flex;
     justify-content: space-between;
+
     padding: 8px 10px;
 
     svg {

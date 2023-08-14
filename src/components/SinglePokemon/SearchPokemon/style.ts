@@ -23,6 +23,15 @@ export const Container = styled.article`
     gap: 40px;
     z-index: 0;
   }
+
+  @media (max-width: 900px) {
+    padding-top: 0;
+    padding-bottom: 2rem;
+    article,
+    aside {
+      justify-content: center;
+    }
+  }
 `;
 
 export const NextPokemon = styled.button`
