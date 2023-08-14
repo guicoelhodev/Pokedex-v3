@@ -3,8 +3,8 @@ import PikachuRun from "../../assets/img/gif/pikachu_run.gif";
 import Pagination from "@mui/material/Pagination";
 import React, { useEffect, useRef, useState } from "react";
 import api from "../../service/api";
-import PokemonItem from "../PokemonItem";
 import useWindowDimensions from "../../hook/useWindowDimensions";
+import PokedexItem from "../PokedexItem";
 
 function PokedexContent() {
   const { width } = useWindowDimensions();
@@ -60,7 +60,7 @@ function PokedexContent() {
       </S.PokemonsPage>
       <S.PokemonList id="pokemonList">
         {dataApiNames !== null ? (
-          dataApiNames.map((name: string) => <PokemonItem key={name} name={name} />)
+          dataApiNames.map((name: string) => <PokedexItem key={name} name={name} />)
         ) : (
           <></>
         )}
