@@ -28,29 +28,30 @@ function HomePage() {
 
   changeColorSvg();
   return (
-    <S.ContainerHome>
-      {width > 900 ? <SvgWave color={colors[i]} bg={"#fff"} /> : <></>}
-      {width <= 500 ? <SvgWaveSmartphone color={colors[i]} bg={"#fff"} /> : <></>}
-      <main>
-        <section>
-          <S.Title color={colors[i]}>Pokedex V3</S.Title>
-          <S.Purpose color={colors[i]}>
-            <div>
-              <span />
-              <h2> PURPOSE </h2>
-              <span />
-            </div>
-            <aside>
-              <p>
-                Re-create an old project, called{" "}
-                <a
-                  href="https://pokedex-v2-coelho-react.netlify.app/"
-                  target="_blank"
-                  rel="noreferrer">
-                  pokedex V2
-                </a>
-                , with new tools, which include:
-              </p>
+    <S.View>
+      <S.Container>
+        {/* {width > 900 ? <SvgWave color={colors[i]} bg={"#fff"} /> : <></>}
+        {width <= 500 ? <SvgWaveSmartphone color={colors[i]} bg={"#fff"} /> : <></>} */}
+        <S.MainContent>
+          <S.ToolSection>
+            <S.Title color={colors[i]}>Pokedex V3</S.Title>
+
+            <S.PurposeContent color={colors[i]}>
+              <div className="purpose-title">
+                <h2> PURPOSE </h2>
+              </div>
+              <article>
+                <p>
+                  Re-create an old project, called{" "}
+                  <a
+                    href="https://pokedex-v2-coelho-react.netlify.app/"
+                    target="_blank"
+                    rel="noreferrer">
+                    pokedex V2
+                  </a>
+                  , with new tools, which include:
+                </p>
+              </article>
               <ul>
                 <li>New animation effects with CSS</li>
                 <li>User experience (UX)</li>
@@ -58,24 +59,23 @@ function HomePage() {
                 <li>Performance</li>
                 <li>Acessibility & SEO</li>
               </ul>
-            </aside>
-          </S.Purpose>
-          <ToolsComponent />
-        </section>
-        <aside>
-          {colors[i] === "#DFCB98" ? (
-            <S.pokemonImg src={Charizard} />
-          ) : colors[i] === "#81D3E5" ? (
-            <S.pokemonImg src={Blastoise} />
-          ) : colors[i] === "#AB9785" ? (
-            <S.pokemonImg src={Entei} />
-          ) : (
-            <></>
-          )}
-        </aside>
-      </main>
-      <NavBar color={colors[i]} />
-    </S.ContainerHome>
+            </S.PurposeContent>
+            <ToolsComponent />
+          </S.ToolSection>
+          <aside>
+            {colors[i] === "#DFCB98" ? (
+              <S.pokemonImg src={Charizard} />
+            ) : colors[i] === "#81D3E5" ? (
+              <S.pokemonImg src={Blastoise} />
+            ) : colors[i] === "#AB9785" ? (
+              <S.pokemonImg src={Entei} />
+            ) : (
+              <></>
+            )}
+          </aside>
+        </S.MainContent>
+      </S.Container>
+    </S.View>
   );
 }
 

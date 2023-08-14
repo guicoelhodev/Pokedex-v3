@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const ContainerTools = styled.ul`
   width: 100%;
   display: flex;
-  padding: 0 60px 40px 60px;
   justify-content: space-between;
   li {
     display: flex;

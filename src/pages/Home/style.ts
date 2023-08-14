@@ -1,79 +1,96 @@
 import styled, { keyframes } from "styled-components";
 
-export const ContainerHome = styled.div`
+export const View = styled.div`
   position: relative;
-  margin: 0 auto;
   width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  min-height: 100vh;
+
+  /* :after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+  } */
+`;
+
+export const Container = styled.div`
+  background-color: lightyellow;
+  width: min(100%, 80rem);
   height: 100%;
+  min-height: 100vh;
+
+  margin: 0 auto;
+`;
+
+export const MainContent = styled.main`
+  flex: 1;
   display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 100vh;
 
-  main {
+  padding: 1rem;
+`;
+
+export const ToolSection = styled.section`
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+export const PurposeContent = styled.section`
+  max-width: 40rem;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  h1 {
+    padding-top: 1rem;
+  }
+
+  color: ${(props) => props.color};
+  transition: color 2s cubic-bezier(0.23, 1, 0.32, 1);
+
+  .purpose-title {
+    position: relative;
     display: flex;
-    width: 100%;
-    height: auto;
-    justify-content: space-evenly;
+    align-self: center;
+    align-items: center;
+    gap: 20px;
 
-    aside {
-      display: grid;
-      place-items: center;
-      height: 100%;
-      max-height: 720px;
-      padding-right: 80px;
+    h2 {
+      font-size: 2rem;
+    }
+    ::before {
+      content: "";
+      top: 5px;
+      height: 5px;
+
+      background-color: ${(props) => props.color};
+      width: 3rem;
+    }
+
+    ::after {
+      content: "";
+      top: 5px;
+      height: 5px;
+
+      background-color: ${(props) => props.color};
+      width: 3rem;
     }
   }
 
-  * {
-    z-index: 1;
+  article > p {
+    font-size: 1.4rem;
   }
+  ul {
+    font-size: 1.4rem;
+    padding-left: 1.2rem;
 
-  section {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-    padding: 30px 0 20px 30px;
-  }
-
-  @media (max-width: 950px) {
-    main {
-      flex-direction: column-reverse;
-
-      aside,
-      section {
-        padding: 0;
-      }
-      section {
-        height: 100%;
-        padding-left: 20px;
-
-        div {
-          padding: 0 60px;
-        }
-      }
-      aside {
-        height: auto;
-        width: auto;
-      }
-    }
-
-    @media (max-width: 500px) {
-      section {
-        padding-left: 0 !important;
-        span,
-        p {
-          font-size: 1rem;
-        }
-      }
-      h1 {
-        padding-top: 10px;
-        text-align: center;
-        font-size: 2.6rem;
-        text-shadow: -1px -1px 0px #fff, -1px 1px 0px #fff, 1px -1px 0px #fff, 1px 0px 0px #fff;
-      }
+    li {
+      list-style: square;
     }
   }
 `;
@@ -126,7 +143,7 @@ export const Title = styled.h1`
 `;
 
 export const Purpose = styled.div`
-  padding-top: 20px;
+  /* padding-top: 20px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -174,7 +191,6 @@ export const Purpose = styled.div`
     }
 
     ul {
-      padding-top: 30px;
       align-self: flex-start;
       width: 100%;
 
